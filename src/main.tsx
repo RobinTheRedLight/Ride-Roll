@@ -4,16 +4,17 @@ import "./index.css";
 import { RouterProvider } from "react-router-dom";
 import { router } from "./Routes/Routes.tsx";
 import { HelmetProvider } from "react-helmet-async";
-import AuthProvider from "./providers/AuthProvider.tsx";
+import { Provider } from "react-redux";
+import { store } from "./redux/store.ts";
 
 createRoot(document.getElementById("root")!).render(
   <StrictMode>
-    <AuthProvider>
+    <Provider store={store}>
       <HelmetProvider>
         <div className="mx-auto">
           <RouterProvider router={router} />
         </div>
       </HelmetProvider>
-    </AuthProvider>
+    </Provider>
   </StrictMode>
 );
