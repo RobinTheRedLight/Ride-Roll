@@ -3,8 +3,11 @@ import { useNavigate } from "react-router-dom";
 import Swal from "sweetalert2";
 import { LoginFormInputs } from "../../types";
 import { useLoginMutation } from "../../redux/features/auth/authApi";
+import { useAppDispatch } from "../../redux/hooks";
+import { setUser } from "../../redux/features/auth/authSlice";
 
 const Login = () => {
+  const dispatch = useAppDispatch();
   const {
     register,
     handleSubmit,
@@ -23,6 +26,7 @@ const Login = () => {
     try {
       const result = await login(userInfo).unwrap();
       if (result) {
+        dispatch(setUser({ user: result.data, token: result.token }));
         Swal.fire({
           position: "top-end",
           icon: "success",
