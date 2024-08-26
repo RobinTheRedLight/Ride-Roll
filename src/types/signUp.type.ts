@@ -4,4 +4,5 @@ export type SignupFormInputs = {
   password: string;
   phone: string;
   address: string;
-}
+  role?: "user" | "admin";
+};
