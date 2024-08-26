@@ -12,8 +12,7 @@ const SignUp = () => {
   } = useForm<SignupFormInputs>();
   const navigate = useNavigate();
 
-  const [signup, { data, isError }] = useSignUpMutation();
-  console.log(data, isError);
+  const [signup] = useSignUpMutation();
 
   const onSubmit: SubmitHandler<SignupFormInputs> = async (data) => {
     const userInfos = {
@@ -38,12 +37,14 @@ const SignUp = () => {
 
         navigate("/login");
       }
-      // eslint-disable-next-line @typescript-eslint/no-unused-vars
     } catch (error) {
+      const errorMessage = (
+        error as { data: { errorSources: { message: string }[] } }
+      ).data.errorSources[0].message;
       Swal.fire({
         position: "top-end",
         icon: "error",
-        title: "User already exists",
+        title: errorMessage,
         showConfirmButton: false,
         timer: 1500,
       });
