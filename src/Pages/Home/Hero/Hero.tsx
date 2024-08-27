@@ -27,8 +27,8 @@ const Hero = () => {
         </p>
 
         {/* Call to Action Button */}
-        <button className="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded mb-4">
-          Get Started
+        <button className="bg-[#ec3c10] hover:bg-orange-500 text-white font-bold py-2 px-4 rounded-full mb-4">
+          Book a Ride!
         </button>
 
         {/* Search Bar */}
@@ -38,7 +38,7 @@ const Hero = () => {
             placeholder="Search bike availability..."
             className="flex-grow px-4 py-2 text-black rounded-l-full focus:outline-none"
           />
-          <button className="bg-blue-500 text-white px-4 py-2 rounded-full">
+          <button className="bg-[#ec3c10] text-white px-4 py-2 rounded-full">
             Search
           </button>
         </div>
