@@ -1,6 +1,18 @@
 import { Link } from "react-router-dom";
 import logo from "../../../assets/logo.svg";
+import { useAppDispatch, useAppSelector } from "../../../redux/hooks";
+import {
+  logout,
+  selectCurrentUser,
+} from "../../../redux/features/auth/authSlice";
 const NavBar = () => {
+  const dispatch = useAppDispatch();
+  const user = useAppSelector(selectCurrentUser);
+
+  const handleLogOut = () => {
+    dispatch(logout());
+  };
+
   return (
     <div className="navbar bg-black text-white font-[Roboto]">
       <div className=" md:navbar-start">
@@ -48,14 +60,27 @@ const NavBar = () => {
           <li>
             <a>Item 1</a>
           </li>
-          <li>
-            <a href="">Item 2</a>
-          </li>
+
           <li>
             <Link className="!text-white" to="/about">
               About
             </Link>
           </li>
+          {user ? (
+            <>
+              <li>
+                <Link to="#" className="!text-white" onClick={handleLogOut}>
+                  Log Out
+                </Link>
+              </li>
+            </>
+          ) : (
+            <>
+              <li>
+                <a href="/login">Login</a>
+              </li>
+            </>
+          )}
         </ul>
       </div>
     </div>
