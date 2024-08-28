@@ -5,7 +5,10 @@ import SignUp from "../Pages/SignUp/SignUp";
 import Login from "../Pages/Login/Login";
 import AboutUs from "../Pages/AboutUs/AboutUs";
 import Temp from "../Pages/Temp/Temp";
-import ProtectedRoute from "../Layout/ProtectedRoute";
+import ProtectedRoute from "./AdminRoute";
+import Dashboard from "../Layout/Dashboard";
+import PrivateRoute from "./PrivateRoute";
+import UserHome from "../Pages/Dashboard/User/userHome";
 
 export const router = createBrowserRouter([
   {
@@ -23,11 +26,27 @@ export const router = createBrowserRouter([
       {
         path: "/temp",
         element: (
-          <ProtectedRoute role="admin">
+          <ProtectedRoute>
             <Temp></Temp>
           </ProtectedRoute>
         ),
       },
+    ],
+  },
+  {
+    path: "dashboard",
+    element: (
+      <PrivateRoute>
+        <Dashboard></Dashboard>
+      </PrivateRoute>
+    ),
+    children: [
+      {
+        path: "profile",
+        element: <UserHome></UserHome>,
+      },
+      {},
+      {},
     ],
   },
 

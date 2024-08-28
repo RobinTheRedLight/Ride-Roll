@@ -7,6 +7,7 @@ const adminApi = baseApi.injectEndpoints({
         url: "users/allUsers",
         method: "GET",
       }),
+      providesTags: ["allUsers"],
     }),
   }),
 });

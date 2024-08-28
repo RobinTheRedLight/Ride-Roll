@@ -5,10 +5,9 @@ import { ReactNode } from "react";
 
 type TProtectedRoute = {
   children: ReactNode;
-  role: string | undefined;
 };
 
-const ProtectedRoute = ({ children, role }: TProtectedRoute) => {
+const AdminRoute = ({ children }: TProtectedRoute) => {
   const user = useAppSelector(selectCurrentUser);
 
   let userRole;
@@ -19,7 +18,7 @@ const ProtectedRoute = ({ children, role }: TProtectedRoute) => {
 
   const dispatch = useAppDispatch();
 
-  if (role !== undefined && role !== userRole) {
+  if (userRole !== undefined && userRole !== "admin") {
     dispatch(logout());
     return <Navigate to="/login" replace={true} />;
   }
@@ -29,4 +28,4 @@ const ProtectedRoute = ({ children, role }: TProtectedRoute) => {
   return children;
 };
 
-export default ProtectedRoute;
+export default AdminRoute;
