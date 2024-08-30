@@ -9,6 +9,13 @@ const userApi = baseApi.injectEndpoints({
       }),
       providesTags: ["profile"],
     }),
+    getBikes: builder.query({
+      query: () => ({
+        url: "/bikes",
+        method: "GET",
+      }),
+      providesTags: ["bikes"],
+    }),
     updateProfile: builder.mutation({
       query: (userInfo) => {
         return {
@@ -19,7 +26,23 @@ const userApi = baseApi.injectEndpoints({
       },
       invalidatesTags: ["profile"],
     }),
+    addRental: builder.mutation({
+      query: (rentalData) => {
+        console.log(rentalData);
+        return {
+          url: "/rentals",
+          method: "POST",
+          body: rentalData,
+        };
+      },
+      invalidatesTags: ["bikes"],
+    }),
   }),
 });
 
-export const { useGetProfileQuery, useUpdateProfileMutation } = userApi;
+export const {
+  useGetProfileQuery,
+  useUpdateProfileMutation,
+  useGetBikesQuery,
+  useAddRentalMutation,
+} = userApi;

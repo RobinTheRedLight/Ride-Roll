@@ -8,7 +8,11 @@ import Temp from "../Pages/Temp/Temp";
 import ProtectedRoute from "./AdminRoute";
 import Dashboard from "../Layout/Dashboard";
 import PrivateRoute from "./PrivateRoute";
-import UserHome from "../Pages/Dashboard/User/userHome";
+import UserHome from "../Pages/Dashboard/User/UserHome";
+import ManageBikes from "../Pages/Dashboard/User/ManageBikes";
+import BikeDetails from "../Pages/Dashboard/User/BikeDetails";
+import ConfirmPayment from "../Pages/Dashboard/User/ConfirmPayment";
+
 
 export const router = createBrowserRouter([
   {
@@ -45,8 +49,18 @@ export const router = createBrowserRouter([
         path: "profile",
         element: <UserHome></UserHome>,
       },
-      {},
-      {},
+      {
+        path: "bikes",
+        element: <ManageBikes></ManageBikes>,
+      },
+      {
+        path: "bikes/:id",
+        element: <BikeDetails></BikeDetails>,
+      },
+      {
+        path: "payment/:id",
+        element: <ConfirmPayment></ConfirmPayment>,
+      },
     ],
   },
 

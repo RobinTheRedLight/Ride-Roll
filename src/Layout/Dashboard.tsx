@@ -11,9 +11,9 @@ import {
 } from "react-icons/fa";
 import { IoMenu } from "react-icons/io5";
 import { TfiMenuAlt } from "react-icons/tfi";
+import { MdOutlineDirectionsBike } from "react-icons/md";
 import { useAppSelector } from "../redux/hooks";
 import { selectCurrentUser } from "../redux/features/auth/authSlice";
-
 
 const Dashboard: React.FC = () => {
   // eslint-disable-next-line @typescript-eslint/no-explicit-any
@@ -49,7 +49,7 @@ const Dashboard: React.FC = () => {
         <ul className="menu p-4 w-80 min-h-full bg-white">
           {user.role === "admin" ? (
             <>
-             <li>
+              <li>
                 <NavLink onClick={closeDrawer} to="/dashboard/profile">
                   <FaHome /> User Profile
                 </NavLink>
@@ -83,8 +83,9 @@ const Dashboard: React.FC = () => {
                 </NavLink>
               </li>
               <li>
-                <NavLink onClick={closeDrawer} to="/">
-                  <FaCalendar /> Reservations
+                <NavLink onClick={closeDrawer} to="/dashboard/bikes">
+                  <MdOutlineDirectionsBike />
+                  Bike Management
                 </NavLink>
               </li>
               <li>
