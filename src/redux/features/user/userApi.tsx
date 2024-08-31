@@ -33,9 +33,17 @@ const userApi = baseApi.injectEndpoints({
       },
       invalidatesTags: ["profile"],
     }),
+    updatePayment: builder.mutation({
+      query: (payment) => {
+        return {
+          url: `/rentals/pay/${payment.id}`,
+          method: "PUT",
+        };
+      },
+      invalidatesTags: ["rentals"],
+    }),
     addRental: builder.mutation({
       query: (rentalData) => {
-        console.log(rentalData);
         return {
           url: "/rentals",
           method: "POST",
@@ -53,4 +61,5 @@ export const {
   useGetBikesQuery,
   useAddRentalMutation,
   useGetRentalsQuery,
+  useUpdatePaymentMutation,
 } = userApi;

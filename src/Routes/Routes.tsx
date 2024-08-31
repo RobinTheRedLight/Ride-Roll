@@ -13,6 +13,7 @@ import ManageBikes from "../Pages/Dashboard/User/ManageBikes";
 import BikeDetails from "../Pages/Dashboard/User/BikeDetails";
 import ConfirmPayment from "../Pages/Dashboard/User/ConfirmPayment";
 import Rental from "../Pages/Dashboard/User/Rental";
+import RentalPayment from "../Pages/Dashboard/User/RentalPayment";
 
 export const router = createBrowserRouter([
   {
@@ -60,6 +61,10 @@ export const router = createBrowserRouter([
       {
         path: "payment/:id",
         element: <ConfirmPayment></ConfirmPayment>,
+      },
+      {
+        path: "pay/:id",
+        element: <RentalPayment></RentalPayment>,
       },
       {
         path: "rentals",

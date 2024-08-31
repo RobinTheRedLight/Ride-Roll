@@ -1,14 +1,12 @@
 /* eslint-disable @typescript-eslint/no-explicit-any */
 import { CardElement, useElements, useStripe } from "@stripe/react-stripe-js";
+import { useUpdatePaymentMutation } from "../../../../redux/features/user/userApi";
 import { useEffect, useState } from "react";
-import "./CheckoutForm.css";
-import { useAddRentalMutation } from "../../../../redux/features/user/userApi";
 import Swal from "sweetalert2";
 
-interface CheckoutFormProps {
-  bikedData: {
+interface FullPayFormProps {
+  bookingData: {
     price: number;
-    startTime: Date;
     id: string;
   };
 }
@@ -17,9 +15,9 @@ interface PaymentResponse {
   data: any;
 }
 
-const CheckoutForm: React.FC<CheckoutFormProps> = ({ bikedData }) => {
-  const [addRental] = useAddRentalMutation();
-  const { price, startTime, id } = bikedData;
+const FullPayForm: React.FC<FullPayFormProps> = ({ bookingData }) => {
+  const [updatePayment] = useUpdatePaymentMutation();
+  const { price, id } = bookingData;
   const stripe = useStripe();
   const elements = useElements();
   const [cardError, setCardError] = useState<string>("");
@@ -99,11 +97,11 @@ const CheckoutForm: React.FC<CheckoutFormProps> = ({ bikedData }) => {
     if (paymentIntent && paymentIntent.status === "succeeded") {
       setTransactionId(paymentIntent.id);
 
-      const rentalData = {
-        bikeId: id,
-        startTime: startTime,
+      const payment = {
+        id: id,
       };
-      addRental(rentalData);
+      updatePayment(payment);
+
       Swal.fire({
         position: "top-end",
         icon: "success",
@@ -153,4 +151,4 @@ const CheckoutForm: React.FC<CheckoutFormProps> = ({ bikedData }) => {
   );
 };
 
-export default CheckoutForm;
+export default FullPayForm;

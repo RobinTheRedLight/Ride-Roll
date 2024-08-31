@@ -68,7 +68,7 @@ const RentalCard = ({ rental }: { rental: Rental }) => {
           </p>
         </div>
         {!isPaid ? (
-          <Link to={`/dashboard/payment/${_id}`} state={{ startTime }}>
+          <Link to={`/dashboard/pay/${_id}`} state={{ totalCost }}>
             <button
               type="submit"
               className="bg-red-600 text-white px-4 py-2 rounded hover:bg-red-700"
