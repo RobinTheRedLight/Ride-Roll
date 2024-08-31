@@ -3,14 +3,13 @@ import { NavLink, Outlet } from "react-router-dom";
 import {
   FaShoppingCart,
   FaHome,
-  FaCalendar,
-  FaWallet,
   FaUtensils,
   FaBook,
   FaUsers,
 } from "react-icons/fa";
 import { IoMenu } from "react-icons/io5";
 import { TfiMenuAlt } from "react-icons/tfi";
+import { BiKey } from "react-icons/bi";
 import { MdOutlineDirectionsBike } from "react-icons/md";
 import { useAppSelector } from "../redux/hooks";
 import { selectCurrentUser } from "../redux/features/auth/authSlice";
@@ -31,7 +30,7 @@ const Dashboard: React.FC = () => {
   return (
     <div className="drawer lg:drawer-open">
       <input id="my-drawer-2" type="checkbox" className="drawer-toggle" />
-      <div className="drawer-content flex flex-col items-center">
+      <div className="drawer-content flex flex-col">
         <Outlet />
         <label
           htmlFor="my-drawer-2"
@@ -89,8 +88,8 @@ const Dashboard: React.FC = () => {
                 </NavLink>
               </li>
               <li>
-                <NavLink onClick={closeDrawer} to="/">
-                  <FaWallet /> Payment History
+                <NavLink onClick={closeDrawer} to="/dashboard/rentals">
+                  <BiKey /> My Rentals
                 </NavLink>
               </li>
               <li>

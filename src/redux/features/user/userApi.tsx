@@ -16,6 +16,13 @@ const userApi = baseApi.injectEndpoints({
       }),
       providesTags: ["bikes"],
     }),
+    getRentals: builder.query({
+      query: () => ({
+        url: "/rentals",
+        method: "GET",
+      }),
+      providesTags: ["rentals"],
+    }),
     updateProfile: builder.mutation({
       query: (userInfo) => {
         return {
@@ -45,4 +52,5 @@ export const {
   useUpdateProfileMutation,
   useGetBikesQuery,
   useAddRentalMutation,
+  useGetRentalsQuery,
 } = userApi;

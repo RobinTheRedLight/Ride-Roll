@@ -14,7 +14,9 @@ const UserHome = () => {
   const [editProfiletData, setEditProfileData] = useState<any>(null);
 
   if (isLoading) {
-    return <span className="loading loading-infinity loading-lg"></span>;
+    return (
+      <span className="loading loading-infinity loading-lg h-full mx-auto"></span>
+    );
   }
   const user = data.data;
 

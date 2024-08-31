@@ -21,7 +21,9 @@ const BikeDetails = () => {
   const [isModalOpen, setModalOpen] = useState(false);
 
   if (isLoading) {
-    return <span className="loading loading-ring loading-lg"></span>;
+    return (
+      <span className="loading loading-ring loading-lg h-full mx-auto"></span>
+    );
   }
 
   const bikes = data.data;
