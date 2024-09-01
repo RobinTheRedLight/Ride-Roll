@@ -9,7 +9,42 @@ const adminApi = baseApi.injectEndpoints({
       }),
       providesTags: ["allUsers"],
     }),
+
+    addBike: builder.mutation({
+      query: (formData) => {
+        return {
+          url: "/bikes",
+          method: "POST",
+          body: formData,
+        };
+      },
+      invalidatesTags: ["bikes"],
+    }),
+
+    updateBike: builder.mutation({
+      query: (bikeInfo) => {
+        return {
+          url: `/bikes/${bikeInfo.id}`,
+          method: "PUT",
+          body: bikeInfo.data,
+        };
+      },
+      invalidatesTags: ["bikes"],
+    }),
+
+    deleteBike: builder.mutation({
+      query: (id) => ({
+        url: `/bikes/${id}`,
+        method: "DELETE",
+      }),
+      invalidatesTags: ["bikes"],
+    }),
   }),
 });
 
-export const { useGetAllUsersQuery } = adminApi;
+export const {
+  useGetAllUsersQuery,
+  useAddBikeMutation,
+  useUpdateBikeMutation,
+  useDeleteBikeMutation,
+} = adminApi;

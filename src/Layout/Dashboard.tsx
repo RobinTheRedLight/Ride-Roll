@@ -3,7 +3,6 @@ import { NavLink, Outlet } from "react-router-dom";
 import {
   FaShoppingCart,
   FaHome,
-  FaUtensils,
   FaBook,
   FaUsers,
 } from "react-icons/fa";
@@ -50,12 +49,13 @@ const Dashboard: React.FC = () => {
             <>
               <li>
                 <NavLink onClick={closeDrawer} to="/dashboard/profile">
-                  <FaHome /> User Profile
+                  <FaHome /> Admin Profile
                 </NavLink>
               </li>
               <li>
-                <NavLink onClick={closeDrawer} to="/dashboard/addItem">
-                  <FaUtensils /> Add an Item
+                <NavLink onClick={closeDrawer} to="/dashboard/admin/bikes">
+                  <MdOutlineDirectionsBike />
+                  Bike Management
                 </NavLink>
               </li>
               <li>
