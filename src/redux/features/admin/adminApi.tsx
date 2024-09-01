@@ -39,6 +39,14 @@ const adminApi = baseApi.injectEndpoints({
       }),
       invalidatesTags: ["bikes"],
     }),
+
+    deleteUser: builder.mutation({
+      query: (id) => ({
+        url: `/users/${id}`,
+        method: "DELETE",
+      }),
+      invalidatesTags: ["allUsers"],
+    }),
   }),
 });
 
@@ -47,4 +55,5 @@ export const {
   useAddBikeMutation,
   useUpdateBikeMutation,
   useDeleteBikeMutation,
+  useDeleteUserMutation,
 } = adminApi;

@@ -15,6 +15,7 @@ import ConfirmPayment from "../Pages/Dashboard/User/ConfirmPayment";
 import Rental from "../Pages/Dashboard/User/Rental";
 import RentalPayment from "../Pages/Dashboard/User/RentalPayment";
 import AllBikes from "../Pages/Dashboard/Admin/AllBikes";
+import AllUsers from "../Pages/Dashboard/Admin/AllUsers";
 
 export const router = createBrowserRouter([
   {
@@ -76,6 +77,14 @@ export const router = createBrowserRouter([
         element: (
           <ProtectedRoute>
             <AllBikes></AllBikes>
+          </ProtectedRoute>
+        ),
+      },
+      {
+        path: "users",
+        element: (
+          <ProtectedRoute>
+            <AllUsers></AllUsers>
           </ProtectedRoute>
         ),
       },

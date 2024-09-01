@@ -1,13 +1,7 @@
 import React from "react";
 import { NavLink, Outlet } from "react-router-dom";
-import {
-  FaShoppingCart,
-  FaHome,
-  FaBook,
-  FaUsers,
-} from "react-icons/fa";
+import { FaShoppingCart, FaHome, FaBook, FaUsers } from "react-icons/fa";
 import { IoMenu } from "react-icons/io5";
-import { TfiMenuAlt } from "react-icons/tfi";
 import { BiKey } from "react-icons/bi";
 import { MdOutlineDirectionsBike } from "react-icons/md";
 import { useAppSelector } from "../redux/hooks";
@@ -59,18 +53,13 @@ const Dashboard: React.FC = () => {
                 </NavLink>
               </li>
               <li>
-                <NavLink onClick={closeDrawer} to="/dashboard/manageitems">
-                  <TfiMenuAlt /> Manage Items
+                <NavLink onClick={closeDrawer} to="/dashboard/users">
+                  <FaUsers /> All Users
                 </NavLink>
               </li>
               <li>
                 <NavLink onClick={closeDrawer} to="mycart">
                   <FaBook /> Manage Bookings
-                </NavLink>
-              </li>
-              <li>
-                <NavLink onClick={closeDrawer} to="allusers">
-                  <FaUsers /> All Users
                 </NavLink>
               </li>
             </>
