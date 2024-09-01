@@ -32,6 +32,17 @@ const adminApi = baseApi.injectEndpoints({
       invalidatesTags: ["bikes"],
     }),
 
+    updateUserAdmin: builder.mutation({
+      query: (adminData) => {
+        return {
+          url: `/users/makeAdmin/${adminData.id}`,
+          method: "PUT",
+          body: adminData.data,
+        };
+      },
+      invalidatesTags: ["allUsers"],
+    }),
+
     deleteBike: builder.mutation({
       query: (id) => ({
         url: `/bikes/${id}`,
@@ -56,4 +67,5 @@ export const {
   useUpdateBikeMutation,
   useDeleteBikeMutation,
   useDeleteUserMutation,
+  useUpdateUserAdminMutation,
 } = adminApi;

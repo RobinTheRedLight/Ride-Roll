@@ -2,6 +2,7 @@ import { Helmet } from "react-helmet-async";
 import {
   useDeleteUserMutation,
   useGetAllUsersQuery,
+  useUpdateUserAdminMutation,
 } from "../../../redux/features/admin/adminApi";
 import { FaTrashAlt, FaUserShield } from "react-icons/fa";
 import Swal from "sweetalert2";
@@ -21,6 +22,7 @@ type User = {
 const AllUsers = () => {
   const { data, isLoading } = useGetAllUsersQuery(undefined);
   const [deleteUser] = useDeleteUserMutation();
+  const [updateUserAdmin] = useUpdateUserAdminMutation();
   if (isLoading) {
     return (
       <span className="loading loading-ring loading-lg h-full mx-auto"></span>
@@ -28,8 +30,23 @@ const AllUsers = () => {
   }
   const users = data.data;
 
-  const handleMakeAdmin = (user: User) => {
-    console.log(user);
+  const handleMakeAdmin = async (user: User) => {
+    try {
+      const adminData = {
+        id: user._id,
+        data: { role: "admin" },
+      };
+      await updateUserAdmin(adminData);
+      Swal.fire({
+        position: "top-end",
+        icon: "success",
+        title: "User role updated to admin",
+        showConfirmButton: false,
+        timer: 1500,
+      });
+    } catch (error) {
+      console.error("Error updating user role:", error);
+    }
   };
   const handleDelete = async (user: User) => {
     try {
@@ -72,9 +89,6 @@ const AllUsers = () => {
                 <th className="p-2">{index + 1}</th>
                 <td className="p-2">
                   <div className="flex items-center gap-3">
-                    <div className="avatar">
-                      <div className="mask mask-squircle w-12 h-12 bg-gray-300"></div>
-                    </div>
                     <div>
                       <div className="font-bold">{user.name}</div>
                     </div>
