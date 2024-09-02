@@ -1,11 +1,12 @@
 import React from "react";
 import { NavLink, Outlet } from "react-router-dom";
-import { FaShoppingCart, FaHome, FaBook, FaUsers } from "react-icons/fa";
+import { FaShoppingCart, FaHome, FaUsers } from "react-icons/fa";
 import { IoMenu } from "react-icons/io5";
 import { BiKey } from "react-icons/bi";
 import { MdOutlineDirectionsBike } from "react-icons/md";
 import { useAppSelector } from "../redux/hooks";
 import { selectCurrentUser } from "../redux/features/auth/authSlice";
+import { GiReturnArrow } from "react-icons/gi";
 
 const Dashboard: React.FC = () => {
   // eslint-disable-next-line @typescript-eslint/no-explicit-any
@@ -58,8 +59,8 @@ const Dashboard: React.FC = () => {
                 </NavLink>
               </li>
               <li>
-                <NavLink onClick={closeDrawer} to="mycart">
-                  <FaBook /> Manage Bookings
+                <NavLink onClick={closeDrawer} to="/dashboard/admin/rentals">
+                  <GiReturnArrow /> Return Bike
                 </NavLink>
               </li>
             </>

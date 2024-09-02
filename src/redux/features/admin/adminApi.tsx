@@ -10,6 +10,14 @@ const adminApi = baseApi.injectEndpoints({
       providesTags: ["allUsers"],
     }),
 
+    getAllRentals: builder.query({
+      query: () => ({
+        url: "rentals/all",
+        method: "GET",
+      }),
+      providesTags: ["allRentals"],
+    }),
+
     addBike: builder.mutation({
       query: (formData) => {
         return {
@@ -43,6 +51,16 @@ const adminApi = baseApi.injectEndpoints({
       invalidatesTags: ["allUsers"],
     }),
 
+    updateRental: builder.mutation({
+      query: (id) => {
+        return {
+          url: `rentals/${id}/return`,
+          method: "PUT",
+        };
+      },
+      invalidatesTags: ["bikes", "allRentals", "rentals"],
+    }),
+
     deleteBike: builder.mutation({
       query: (id) => ({
         url: `/bikes/${id}`,
@@ -68,4 +86,6 @@ export const {
   useDeleteBikeMutation,
   useDeleteUserMutation,
   useUpdateUserAdminMutation,
+  useGetAllRentalsQuery,
+  useUpdateRentalMutation,
 } = adminApi;

@@ -1,16 +1,21 @@
-import { Link } from "react-router-dom";
-import { useGetBikesQuery } from "../../../redux/features/user/userApi";
 import moment from "moment";
+import { useGetBikesQuery } from "../../../redux/features/user/userApi";
 
-type Rental = {
-  _id: string;
-  userId: string;
-  bikeId: string;
-  startTime: string;
-  returnTime: Date | null;
-  totalCost: number;
-  isReturned: boolean;
-  isPaid: boolean;
+type RentalProps = {
+  rental: {
+    _id: string;
+    userId: string;
+    bikeId: string;
+    startTime: string;
+    returnTime: string;
+    totalCost: number;
+    isReturned: boolean;
+    isPaid: boolean;
+    createdAt: string;
+    updatedAt: string;
+    __v: number;
+  };
+  onUpdate: () => void;
 };
 
 type Bike = {
@@ -25,16 +30,16 @@ type Bike = {
   brand: string;
 };
 
-const RentalCard = ({ rental }: { rental: Rental }) => {
-  const { _id, startTime, returnTime, totalCost, isPaid, bikeId, isReturned } =
-    rental;
+const ReturnBikeCard = ({ rental, onUpdate }: RentalProps) => {
   const { data, isLoading } = useGetBikesQuery(undefined);
-
   if (isLoading) {
     return (
       <span className="loading loading-ring loading-lg h-full mx-auto"></span>
     );
   }
+
+  const { bikeId, startTime, returnTime, totalCost, isReturned, isPaid } =
+    rental;
 
   const formattedStartTime =
     startTime !== null
@@ -48,11 +53,12 @@ const RentalCard = ({ rental }: { rental: Rental }) => {
 
   const bikes = data.data;
   const bike = bikes.find((element: Bike) => element._id === bikeId);
+  console.log(bikes);
 
   return (
-    <div className="border border-gray-300 rounded-lg p-4 w-[22rem] lg:w-96 text-center shadow-lg font-[Roboto] mt-5">
-      <div className="mt-4 ">
-        <h3 className="text-xl font-bold mb-2">{bike.name}</h3>
+    <div className="border border-gray-300 rounded-lg p-4 m-4 w-72 text-center shadow-lg font-[Roboto]">
+      <div className="mt-4">
+        <h3 className="text-xl font-bold mb-2">{bike?.name}</h3>
         <div className="text-start p-0 lg:p-5">
           <p className="text-gray-800 mb-2">
             {" "}
@@ -67,27 +73,20 @@ const RentalCard = ({ rental }: { rental: Rental }) => {
             <span className="font-semibold">Total Cost: </span>
             {totalCost}
           </p>
+          <p className="text-gray-800 mb-2">
+            In Stock: {isReturned ? "Yes" : "No"}
+          </p>
+          <p className="text-gray-800 mb-2">Paid: {isPaid ? "Yes" : "No"}</p>
         </div>
-        {!isPaid ? (
-          <Link to={`/dashboard/pay/${_id}`} state={{ totalCost }}>
-            <button
-              type="submit"
-              className={`bg-red-600 text-white px-4 py-2 rounded hover:bg-red-700 ${
-                !isReturned && "opacity-50 cursor-not-allowed"
-              }`}
-              disabled={!isReturned}
-            >
-              Pay ৳ {totalCost}
-            </button>
-          </Link>
-        ) : (
-          <button className="bg-green-700 px-4 py-2 rounded text-white">
-            Paid
-          </button>
-        )}
+        <button
+          onClick={onUpdate}
+          className="bg-yellow-500 text-white px-4 py-2 rounded hover:bg-yellow-600 mr-2"
+        >
+          Calculate
+        </button>
       </div>
     </div>
   );
 };
 
-export default RentalCard;
+export default ReturnBikeCard;

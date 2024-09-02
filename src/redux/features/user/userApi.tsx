@@ -50,7 +50,7 @@ const userApi = baseApi.injectEndpoints({
           body: rentalData,
         };
       },
-      invalidatesTags: ["bikes"],
+      invalidatesTags: ["bikes", "rentals"],
     }),
   }),
 });
