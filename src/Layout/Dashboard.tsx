@@ -7,6 +7,7 @@ import { MdOutlineDirectionsBike } from "react-icons/md";
 import { useAppSelector } from "../redux/hooks";
 import { selectCurrentUser } from "../redux/features/auth/authSlice";
 import { GiReturnArrow } from "react-icons/gi";
+import { RiCoupon2Line } from "react-icons/ri";
 
 const Dashboard: React.FC = () => {
   // eslint-disable-next-line @typescript-eslint/no-explicit-any
@@ -61,6 +62,11 @@ const Dashboard: React.FC = () => {
               <li>
                 <NavLink onClick={closeDrawer} to="/dashboard/admin/rentals">
                   <GiReturnArrow /> Return Bike
+                </NavLink>
+              </li>
+              <li>
+                <NavLink onClick={closeDrawer} to="/dashboard/admin/coupon">
+                  <RiCoupon2Line /> Coupon Management
                 </NavLink>
               </li>
             </>
