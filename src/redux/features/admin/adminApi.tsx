@@ -18,6 +18,14 @@ const adminApi = baseApi.injectEndpoints({
       providesTags: ["allRentals"],
     }),
 
+    getAllCoupons: builder.query({
+      query: () => ({
+        url: "/admin/coupon",
+        method: "GET",
+      }),
+      providesTags: ["allCoupons"],
+    }),
+
     addBike: builder.mutation({
       query: (formData) => {
         return {
@@ -27,6 +35,17 @@ const adminApi = baseApi.injectEndpoints({
         };
       },
       invalidatesTags: ["bikes"],
+    }),
+
+    addCoupon: builder.mutation({
+      query: (couponData) => {
+        return {
+          url: "/admin/coupon",
+          method: "POST",
+          body: couponData,
+        };
+      },
+      invalidatesTags: ["allCoupons"],
     }),
 
     updateBike: builder.mutation({
@@ -76,6 +95,14 @@ const adminApi = baseApi.injectEndpoints({
       }),
       invalidatesTags: ["allUsers"],
     }),
+
+    deleteCoupon: builder.mutation({
+      query: (id) => ({
+        url: `/admin/coupon/${id}`,
+        method: "DELETE",
+      }),
+      invalidatesTags: ["allCoupons"],
+    }),
   }),
 });
 
@@ -88,4 +115,7 @@ export const {
   useUpdateUserAdminMutation,
   useGetAllRentalsQuery,
   useUpdateRentalMutation,
+  useGetAllCouponsQuery,
+  useAddCouponMutation,
+  useDeleteCouponMutation,
 } = adminApi;

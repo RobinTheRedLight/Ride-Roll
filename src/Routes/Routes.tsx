@@ -17,6 +17,8 @@ import RentalPayment from "../Pages/Dashboard/User/RentalPayment";
 import AllBikes from "../Pages/Dashboard/Admin/AllBikes";
 import AllUsers from "../Pages/Dashboard/Admin/AllUsers";
 import ReturnBike from "../Pages/Dashboard/Admin/ReturnBike";
+import NotFound from "../components/NotFound";
+import CouponManagement from "../Pages/Dashboard/Admin/CouponManagement";
 
 export const router = createBrowserRouter([
   {
@@ -97,6 +99,14 @@ export const router = createBrowserRouter([
           </ProtectedRoute>
         ),
       },
+      {
+        path: "admin/coupon",
+        element: (
+          <ProtectedRoute>
+            <CouponManagement></CouponManagement>
+          </ProtectedRoute>
+        ),
+      },
     ],
   },
 
@@ -107,5 +117,10 @@ export const router = createBrowserRouter([
   {
     path: "/login",
     element: <Login></Login>,
+  },
+
+  {
+    path: "*",
+    element: <NotFound></NotFound>,
   },
 ]);
