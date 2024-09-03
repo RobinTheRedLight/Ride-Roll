@@ -1,66 +1,36 @@
-import { useState } from "react";
+import React from "react";
+import { SpinWheel, ISpinWheelProps } from "spin-wheel-game";
 
+const segments = [
+  { segmentText: "Option 1", segColor: "red" },
+  { segmentText: "Option 2", segColor: "blue" },
+  { segmentText: "Option 3", segColor: "green" },
+  // Add more segments as needed
+];
 
+const Temp: React.FC = () => {
+  const handleSpinFinish = (result: string) => {
+    console.log(`Spun to: ${result}`);
+    // Handle the result as needed
+  };
 
-const tabStyle = {
-  padding: '10px 20px',
-  cursor: 'pointer',
-  borderBottom: '2px solid transparent',
-};
-const activeTabStyle = {
-  ...tabStyle,
-  borderBottom: '2px solid blue',
-};
+  const spinWheelProps: ISpinWheelProps = {
+    segments,
+    onFinished: handleSpinFinish,
+    primaryColor: "black",
+    contrastColor: "white",
+    buttonText: "Spin",
+    isOnlyOnce: false,
+    size: 190,
+    upDuration: 100,
+    downDuration: 600,
+    fontFamily: "Arial",
+    arrowLocation: "top",
+    showTextOnSpin: true,
+    isSpinSound: true,
+  };
 
-const Temp = () => {
-
-  const [activeTab, setActiveTab] = useState<'Paid' | 'Unpaid'>('Unpaid');
-
-  // Handler for tab click
-  const handleTabClick = (tab: 'Paid' | 'Unpaid') => {
-    setActiveTab(tab);
-  }
-
-
-  return  <div>
-  <h1>My Rentals</h1>
-  <div style={{ display: 'flex' }}>
-    {/* Tabs */}
-    <div
-      style={activeTab === 'Unpaid' ? activeTabStyle : tabStyle}
-      onClick={() => handleTabClick('Unpaid')}
-    >
-      Unpaid
-    </div>
-    <div
-      style={activeTab === 'Paid' ? activeTabStyle : tabStyle}
-      onClick={() => handleTabClick('Paid')}
-    >
-      Paid
-    </div>
-  </div>
-
-  {/* Content based on active tab */}
-  <div style={{ marginTop: '20px' }}>
-    {activeTab === 'Unpaid' && (
-      <div>
-        {/* Unpaid content goes here */}
-        <h2>Unpaid Rentals</h2>
-        <p>List of unpaid rentals will be displayed here.</p>
-      </div>
-    )}
-
-    {activeTab === 'Paid' && (
-      <div>
-        {/* Paid content goes here */}
-        <h2>Paid Rentals</h2>
-        <p>List of paid rentals will be displayed here.</p>
-      </div>
-    )}
-  </div>
-</div>
-    
- 
+  return <SpinWheel {...spinWheelProps} />;
 };
 
 export default Temp;

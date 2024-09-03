@@ -12,6 +12,7 @@ interface CouponFormData {
   code: string;
   discount: number;
   expiryDate: string;
+  description: string;
 }
 
 const CouponManagement = () => {
@@ -66,13 +67,13 @@ const CouponManagement = () => {
   };
 
   return (
-    <div className="max-w-4xl lg:w-full mx-auto mt-0 lg:mt-5 p-8 bg-white shadow-lg rounded-lg font-[Roboto]">
-      <h1 className=" text-3xl lg:text-4xl text-center text-gray-800 mb-6 font-[Oswald]">
+    <div className="max-w-4xl md:w-full mx-auto mt-0 lg:mt-5 p-4 sm:p-8 bg-white shadow-lg rounded-lg font-[Roboto]">
+      <h1 className="text-2xl sm:text-3xl lg:text-4xl text-center text-gray-800 mb-6 font-[Oswald]">
         Coupon Management
       </h1>
       <form
         onSubmit={handleSubmit(onSubmit)}
-        className="grid grid-cols-1 md:grid-cols-3 gap-6 mb-8 mt-0 lg:mt-10"
+        className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4 sm:gap-6 mb-8 mt-0 lg:mt-10"
       >
         <div>
           <label className="block text-sm font-medium text-gray-700">
@@ -128,10 +129,28 @@ const CouponManagement = () => {
           )}
         </div>
 
-        <div className="md:col-span-3 flex justify-end">
+        <div className="sm:col-span-2 lg:col-span-3">
+          <label className="block text-sm font-medium text-gray-700">
+            Description
+          </label>
+          <textarea
+            {...register("description", {
+              required: "Description is required",
+            })}
+            className="mt-1 block w-full p-2 border border-gray-300 rounded-md shadow-sm focus:ring-blue-500 focus:border-blue-500"
+            placeholder="Enter coupon description"
+          ></textarea>
+          {errors.description && (
+            <p className="text-red-500 text-sm mt-1">
+              {errors.description.message}
+            </p>
+          )}
+        </div>
+
+        <div className="sm:col-span-2 lg:col-span-3 flex justify-end">
           <button
             type="submit"
-            className="mt-4 w-full md:w-auto bg-blue-600 text-white font-bold py-2 px-4 rounded-md hover:bg-blue-700 focus:ring-2 focus:ring-blue-500 focus:ring-opacity-50"
+            className="mt-4 w-full sm:w-auto bg-blue-600 text-white font-bold py-2 px-4 rounded-md hover:bg-blue-700 focus:ring-2 focus:ring-blue-500 focus:ring-opacity-50"
           >
             Create Coupon
           </button>
@@ -141,16 +160,16 @@ const CouponManagement = () => {
       <table className="min-w-full bg-white border border-gray-200 rounded-lg overflow-hidden">
         <thead className="bg-gray-100">
           <tr>
-            <th className="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">
+            <th className="px-4 sm:px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">
               Code
             </th>
-            <th className="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">
+            <th className="px-4 sm:px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">
               Discount
             </th>
-            <th className="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">
+            <th className="px-4 sm:px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">
               Expiry Date
             </th>
-            <th className="px-6 py-3 text-right text-xs font-medium text-gray-500 uppercase tracking-wider">
+            <th className="px-4 sm:px-6 py-3 text-right text-xs font-medium text-gray-500 uppercase tracking-wider">
               Action
             </th>
           </tr>
@@ -159,16 +178,16 @@ const CouponManagement = () => {
           {couponsData.data && couponsData.data.length > 0 ? (
             couponsData.data.map((coupon: CouponFormData) => (
               <tr key={coupon.code} className="hover:bg-gray-50">
-                <td className="px-6 py-4 whitespace-nowrap text-sm font-medium text-gray-900">
+                <td className="px-4 sm:px-6 py-4 whitespace-nowrap text-sm font-medium text-gray-900">
                   {coupon.code}
                 </td>
-                <td className="px-6 py-4 whitespace-nowrap text-sm text-gray-700">
+                <td className="px-4 sm:px-6 py-4 whitespace-nowrap text-sm text-gray-700">
                   {coupon.discount}%
                 </td>
-                <td className="px-6 py-4 whitespace-nowrap text-sm text-gray-700">
+                <td className="px-4 sm:px-6 py-4 whitespace-nowrap text-sm text-gray-700">
                   {new Date(coupon.expiryDate).toLocaleDateString()}
                 </td>
-                <td className="px-6 py-4 whitespace-nowrap text-right text-sm font-medium">
+                <td className="px-4 sm:px-6 py-4 whitespace-nowrap text-right text-sm font-medium">
                   <button
                     className="ml-4 text-red-600 hover:text-red-900"
                     onClick={() => handleDelete(coupon._id)}
@@ -182,7 +201,7 @@ const CouponManagement = () => {
             <tr>
               <td
                 colSpan={4}
-                className="px-6 py-4 text-center text-sm text-gray-500"
+                className="px-4 sm:px-6 py-4 text-center text-sm text-gray-500"
               >
                 No coupons available
               </td>
