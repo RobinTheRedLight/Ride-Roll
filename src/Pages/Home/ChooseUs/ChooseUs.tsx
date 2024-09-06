@@ -81,7 +81,7 @@ const ChooseUs = () => {
   return (
     <div className="py-12">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-        <h2 className="text-3xl lg:text-5xl text-gray-800 mb-8 text-center font-[Oswald]">
+        <h2 className="text-3xl lg:text-5xl  mb-8 text-center font-[Oswald]">
           Why Choose Us
         </h2>
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8 font-[Roboto] mt-10">
@@ -93,13 +93,13 @@ const ChooseUs = () => {
               viewport={{ once: true }}
               whileTap={{ scale: 0.95 }}
               key={benefit.id}
-              className=" p-6 rounded-lg shadow-lg text-center bg-gray-100"
+              className=" p-6 rounded-lg shadow-lg text-center border"
             >
               <div className="flex justify-center mb-4">{benefit.icon}</div>
-              <h3 className="text-xl font-semibold text-gray-800 mb-2">
+              <h3 className="text-xl font-semibold  mb-2">
                 {benefit.title}
               </h3>
-              <p className="text-gray-600">{benefit.description}</p>
+              <p className="">{benefit.description}</p>
             </motion.div>
           ))}
         </div>

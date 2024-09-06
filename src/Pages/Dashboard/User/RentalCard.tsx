@@ -54,16 +54,16 @@ const RentalCard = ({ rental }: { rental: Rental }) => {
       <div className="mt-4 ">
         <h3 className="text-xl font-bold mb-2">{bike.name}</h3>
         <div className="text-start p-0 lg:p-5">
-          <p className="text-gray-800 mb-2">
+          <p className=" mb-2">
             {" "}
             <span className="font-semibold ">Start Time: </span>{" "}
             {formattedStartTime}
           </p>
-          <p className="text-gray-800 mb-2">
+          <p className=" mb-2">
             <span className="font-semibold">Return Time: </span>
             {formattedReturnTime}
           </p>
-          <p className="text-gray-800 mb-2">
+          <p className=" mb-2">
             <span className="font-semibold">Total Cost: </span>
             {totalCost}
           </p>

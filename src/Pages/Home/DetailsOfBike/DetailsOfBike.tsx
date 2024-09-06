@@ -56,7 +56,7 @@ const DetailsOfBike = () => {
 
   return (
     <>
-      <div className="container mx-auto mt-12">
+      <div className="container mx-auto mt-12 mb-12">
         <h1 className="text-5xl text-center font-[Oswald]">{bike.name}</h1>
         <div className="card lg:card-side bg-base-100 shadow-xl font-[Roboto]">
           <figure className="w-full lg:w-1/2">

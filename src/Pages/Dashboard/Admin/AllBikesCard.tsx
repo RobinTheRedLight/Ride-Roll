@@ -24,13 +24,13 @@ const AllBikesCard = ({ product, onEdit, onDelete }: CardProps) => {
       <img src={img} alt={name} className="w-full h-48 object-cover rounded" />
       <div className="mt-4">
         <h3 className="text-xl font-bold mb-2">{name}</h3>
-        <p className="text-gray-600 mb-2">{model}</p>
-        <p className="text-gray-800 mb-2">
+        <p className=" mb-2">{model}</p>
+        <p className=" mb-2">
           In Stock: {isAvailable ? "Yes" : "No"}
         </p>
-        <p className="text-gray-800 mb-2">Brand: {brand}</p>
-        <p className="text-gray-600 mb-2 truncate">{description}</p>
-        <p className="text-gray-900 font-bold mb-4">৳{pricePerHour}</p>
+        <p className=" mb-2">Brand: {brand}</p>
+        <p className=" mb-2 truncate">{description}</p>
+        <p className=" font-bold mb-4">৳{pricePerHour}</p>
         <button
           onClick={onEdit}
           className="bg-yellow-500 text-white px-4 py-2 rounded hover:bg-yellow-600 mr-2"

@@ -126,11 +126,11 @@ const Discount = () => {
   };
 
   return (
-    <div className="py-12 bg-blue-50">
+    <div className="py-12">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <div className="grid grid-cols-1 lg:grid-cols-2 gap-12">
           <div>
-            <h2 className="text-3xl lg:text-4xl text-gray-800 mb-8 text-center lg:text-left font-[Oswald]">
+            <h2 className="text-3xl lg:text-4xl mb-8 text-center lg:text-left font-[Oswald]">
               Coupons & Discounts
             </h2>
             <div className="grid grid-cols-1 md:grid-cols-2 gap-8 font-[Roboto]">
@@ -142,12 +142,12 @@ const Discount = () => {
                   viewport={{ once: true }}
                   whileTap={{ scale: 0.95 }}
                   key={promotion._id}
-                  className="bg-white p-6 rounded-lg shadow-lg text-center"
+                  className=" p-6 rounded-lg shadow-lg text-center border"
                 >
                   <p className="text-lg font-bold text-blue-600 mb-4">
                     Use Code: {promotion.code}
                   </p>
-                  <p className="text-gray-600 mb-4">{promotion.description}</p>
+                  <p className="mb-4">{promotion.description}</p>
                   <button
                     className="mt-4 bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded"
                     onClick={() => handleCopyCode(promotion.code)}
@@ -158,7 +158,7 @@ const Discount = () => {
               ))}
             </div>
             <div className="mt-8 text-center ">
-              <p className="text-gray-700">
+              <p className="">
                 To apply a coupon, enter the code at checkout in the coupon
                 field.
               </p>
@@ -166,7 +166,7 @@ const Discount = () => {
           </div>
 
           <div className="mt-20 lg:mt-0">
-            <h2 className="text-3xl lg:text-4xl text-gray-800 mb-8 text-center font-[Oswald]">
+            <h2 className="text-3xl lg:text-4xl  mb-8 text-center font-[Oswald]">
               Spin the Wheel to Get a Coupon!
             </h2>
             <motion.div

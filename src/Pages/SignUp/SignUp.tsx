@@ -1,5 +1,5 @@
 import { useForm, SubmitHandler } from "react-hook-form";
-import { useNavigate, Link } from "react-router-dom";  // Import Link
+import { useNavigate, Link } from "react-router-dom"; // Import Link
 import { SignupFormInputs } from "../../types";
 import { useSignUpMutation } from "../../redux/features/auth/authApi";
 import Swal from "sweetalert2";
@@ -52,10 +52,10 @@ const SignUp = () => {
   };
 
   return (
-    <div className="min-h-screen flex items-center justify-center bg-gray-100 font-[Roboto]">
+    <div className="min-h-screen flex items-center justify-center font-[Roboto]">
       <form
         onSubmit={handleSubmit(onSubmit)}
-        className="bg-white p-8 rounded shadow-md w-96"
+        className=" p-8 rounded shadow-md w-96"
       >
         <h2 className="text-3xl lg:text-4xl mb-6 text-center font-[Oswald]">
           Sign Up
@@ -63,7 +63,7 @@ const SignUp = () => {
 
         {/* Name Field */}
         <div className="mb-4">
-          <label className="block text-gray-700" htmlFor="name">
+          <label className="block" htmlFor="name">
             Name
           </label>
           <input
@@ -80,7 +80,7 @@ const SignUp = () => {
 
         {/* Email Field */}
         <div className="mb-4">
-          <label className="block text-gray-700" htmlFor="email">
+          <label className="block" htmlFor="email">
             Email
           </label>
           <input
@@ -104,7 +104,7 @@ const SignUp = () => {
 
         {/* Password Field */}
         <div className="mb-4">
-          <label className="block text-gray-700" htmlFor="password">
+          <label className="block" htmlFor="password">
             Password
           </label>
           <input
@@ -124,7 +124,7 @@ const SignUp = () => {
 
         {/* Phone Field */}
         <div className="mb-4">
-          <label className="block text-gray-700" htmlFor="phone">
+          <label className="block" htmlFor="phone">
             Phone
           </label>
           <input
@@ -148,7 +148,7 @@ const SignUp = () => {
 
         {/* Address Field */}
         <div className="mb-6">
-          <label className="block text-gray-700" htmlFor="address">
+          <label className="block" htmlFor="address">
             Address
           </label>
           <textarea
@@ -165,10 +165,7 @@ const SignUp = () => {
           )}
         </div>
 
-        <button
-          type="submit"
-          className="w-full bg-blue-500 text-white py-2 rounded hover:bg-blue-600"
-        >
+        <button type="submit" className="w-full btn btn-primary">
           Sign Up
         </button>
 

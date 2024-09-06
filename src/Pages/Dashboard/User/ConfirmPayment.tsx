@@ -38,7 +38,7 @@ const ConfirmPayment = () => {
   };
 
   return (
-    <div className="font-[Roboto] mt-10 p-5">
+    <div className="font-[Roboto] mt-10 p-5 max-w-3xl">
       <h1 className="text-3xl md:text-5xl font-[Oswald]">
         Confirm your payment
       </h1>

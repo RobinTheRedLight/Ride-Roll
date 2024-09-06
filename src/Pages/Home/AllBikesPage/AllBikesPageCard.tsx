@@ -25,15 +25,13 @@ const AllBikesPageCard = ({ product }: CardProps) => {
       <img src={img} alt={brand} className="w-full h-48 object-cover" />
       <div className="mt-4">
         <h3 className="text-xl font-bold mb-2">{name}</h3>
-        <p className="text-gray-600 mb-2">{model}</p>
-        <p className="text-gray-800 mb-2">Brand: {brand}</p>
-        <p className="text-gray-800 mb-2">{stockStatus}</p>
+        <p className=" mb-2">{model}</p>
+        <p className=" mb-2">Brand: {brand}</p>
+        <p className=" mb-2">{stockStatus}</p>
 
-        <p className="text-gray-900 font-bold mb-4">৳{pricePerHour}</p>
+        <p className=" font-bold mb-4">৳{pricePerHour}</p>
         <Link to={`/bikes/${_id}`}>
-          <button className="bg-black text-white px-4 py-2 rounded hover:bg-slate-700">
-            View Details
-          </button>
+          <button className="btn btn-primary  ">View Details</button>
         </Link>
       </div>
     </div>

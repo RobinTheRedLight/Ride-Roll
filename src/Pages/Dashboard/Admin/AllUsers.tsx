@@ -64,18 +64,18 @@ const AllUsers = () => {
   };
 
   return (
-    <div className="p-4">
+    <div className="p-4 mt-5">
       <Helmet>
         <title>Dashboard | All Users</title>
       </Helmet>
-      <h3 className="text-3xl font-bold font-['Cinzel'] mb-5">
+      <h3 className="text-3xl font-['Oswald'] mb-5">
         Total Users: {users.length}
       </h3>
       <div className="overflow-x-auto">
         <table className="table w-full">
           {/* head */}
           <thead>
-            <tr className="bg-gray-200 text-left">
+            <tr className="text-left">
               <th className="p-2">#</th>
               <th className="p-2">Name</th>
               <th className="p-2">Email</th>

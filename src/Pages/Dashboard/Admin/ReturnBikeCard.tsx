@@ -60,27 +60,27 @@ const ReturnBikeCard = ({ rental, onUpdate }: RentalProps) => {
       <div className="mt-4">
         <h3 className="text-xl font-bold mb-2">{bike?.name}</h3>
         <div className="text-start p-0 lg:p-5">
-          <p className="text-gray-800 mb-2">
+          <p className=" mb-2">
             {" "}
             <span className="font-semibold ">Start Time: </span>{" "}
             {formattedStartTime}
           </p>
-          <p className="text-gray-800 mb-2">
+          <p className=" mb-2">
             <span className="font-semibold">Return Time: </span>
             {formattedReturnTime}
           </p>
-          <p className="text-gray-800 mb-2">
+          <p className=" mb-2">
             <span className="font-semibold">Total Cost: </span>
             {totalCost}
           </p>
-          <p className="text-gray-800 mb-2">
+          <p className=" mb-2">
             In Stock: {isReturned ? "Yes" : "No"}
           </p>
-          <p className="text-gray-800 mb-2">Paid: {isPaid ? "Yes" : "No"}</p>
+          <p className=" mb-2">Paid: {isPaid ? "Yes" : "No"}</p>
         </div>
         <button
           onClick={onUpdate}
-          className="bg-black text-white px-4 py-2 rounded hover:bg-gray-700 mr-2"
+          className="btn btn-primary mr-2"
         >
           Calculate
         </button>

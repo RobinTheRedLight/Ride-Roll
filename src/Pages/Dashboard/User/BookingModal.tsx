@@ -24,8 +24,8 @@ const BookingModal: React.FC<BookingModalProps> = ({
   };
 
   return (
-    <div className="fixed inset-0 z-50 flex items-center justify-center bg-gray-800 bg-opacity-50">
-      <div className="bg-white p-6 rounded shadow-lg w-full max-w-md">
+    <div className="fixed inset-0 z-50 flex items-center justify-center ">
+      <div className=" p-6 rounded shadow-lg w-full max-w-md  backdrop-blur-lg backdrop-brightness-150">
         <h2 className="text-xl font-bold mb-4">Book Your Ride</h2>
         <form onSubmit={handleSubmit}>
           <div className="mb-4">
@@ -41,7 +41,7 @@ const BookingModal: React.FC<BookingModalProps> = ({
           <Link to={`/dashboard/payment/${id}`} state={{ startTime }}>
             <button
               type="submit"
-              className="bg-blue-500 text-white px-4 py-2 rounded hover:bg-blue-600"
+              className="btn btn-primary"
             >
               Pay Tk 100(Advance)
             </button>
@@ -49,7 +49,7 @@ const BookingModal: React.FC<BookingModalProps> = ({
         </form>
         <button
           onClick={onClose}
-          className="mt-4 text-gray-500 hover:text-gray-800"
+          className="mt-4 btn btn-error"
         >
           Cancel
         </button>

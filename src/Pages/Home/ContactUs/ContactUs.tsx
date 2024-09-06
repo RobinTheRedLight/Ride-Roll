@@ -41,9 +41,9 @@ const ContactUs = () => {
   };
 
   return (
-    <div className="py-16 bg-white font-[Roboto]">
+    <div className="py-16 font-[Roboto]">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-        <h2 className="text-3xl sm:text-4xl lg:text-5xl text-black mb-8 sm:mb-12 text-center font-[Oswald]">
+        <h2 className="text-3xl sm:text-4xl lg:text-5xl mb-8 sm:mb-12 text-center font-[Oswald]">
           Contact Us
         </h2>
 
@@ -58,19 +58,19 @@ const ContactUs = () => {
           >
             <motion.h2
               variants={cards}
-              className="text-2xl sm:text-3xl lg:text-4xl text-black mb-6 sm:mb-12 text-left font-[Oswald] tracking-wide"
+              className="text-2xl sm:text-3xl lg:text-4xl  mb-6 sm:mb-12 text-left font-[Oswald] tracking-wide"
             >
               Get in Touch
             </motion.h2>
             <motion.h3
               variants={cards}
-              className="text-xl sm:text-2xl font-bold text-gray-800 mb-4"
+              className="text-xl sm:text-2xl font-bold  mb-4"
             >
               Ready to ride? Contact us for your perfect bike rental
             </motion.h3>
             <motion.p
               variants={cards}
-              className="text-sm sm:text-md lg:text-lg text-gray-600 mb-8 leading-relaxed"
+              className="text-sm sm:text-md lg:text-lg  mb-8 leading-relaxed"
             >
               Ditch the car, embrace the ride! We offer a wide selection of
               bikes for all types of adventures. Whether you're exploring the
@@ -126,7 +126,6 @@ const ContactUs = () => {
             initial="hidden"
             whileInView="show"
             viewport={{ once: true }}
-            whileTap={{ scale: 0.95 }}
             className="lg:w-1/2"
           >
             {submitted ? (
@@ -175,7 +174,7 @@ const ContactUs = () => {
                     required
                     className="h-4 w-4 border border-gray-300 rounded focus:outline-none focus:ring-2 focus:ring-blue-500"
                   />
-                  <label htmlFor="terms" className="text-gray-700">
+                  <label htmlFor="terms" className="">
                     I accept the{" "}
                     <a href="#" className="text-blue-500 hover:underline">
                       Terms of Service
@@ -185,7 +184,7 @@ const ContactUs = () => {
                 <div className="text-center">
                   <button
                     type="submit"
-                    className="bg-gray-600 text-white font-bold py-3 px-6 rounded-lg shadow hover:bg-gray-700 transition"
+                    className="btn btn-primary  py-3 px-6  transition"
                   >
                     Submit
                   </button>

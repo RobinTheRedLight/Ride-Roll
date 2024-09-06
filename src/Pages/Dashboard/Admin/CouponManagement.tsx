@@ -68,11 +68,11 @@ const CouponManagement = () => {
   };
 
   return (
-    <div className="max-w-4xl md:w-full mx-auto mt-0 lg:mt-5 p-4 sm:p-8 bg-white shadow-lg rounded-lg font-[Roboto]">
+    <div className="max-w-4xl md:w-full mx-auto mt-0 lg:mt-5 p-4 sm:p-8  shadow-lg rounded-lg font-[Roboto]">
       <Helmet>
         <title>Dashboard | Coupon Management</title>
       </Helmet>
-      <h1 className="text-2xl sm:text-3xl lg:text-4xl text-center text-gray-800 mb-6 font-[Oswald]">
+      <h1 className="text-2xl sm:text-3xl lg:text-4xl text-center t mb-6 font-[Oswald]">
         Coupon Management
       </h1>
       <form
@@ -80,7 +80,7 @@ const CouponManagement = () => {
         className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4 sm:gap-6 mb-8 mt-0 lg:mt-10"
       >
         <div>
-          <label className="block text-sm font-medium text-gray-700">
+          <label className="block text-sm font-medium ">
             Coupon Code
           </label>
           <input
@@ -95,7 +95,7 @@ const CouponManagement = () => {
         </div>
 
         <div>
-          <label className="block text-sm font-medium text-gray-700">
+          <label className="block text-sm font-medium ">
             Discount (%)
           </label>
           <input
@@ -116,7 +116,7 @@ const CouponManagement = () => {
         </div>
 
         <div>
-          <label className="block text-sm font-medium text-gray-700">
+          <label className="block text-sm font-medium">
             Expiry Date
           </label>
           <input
@@ -134,7 +134,7 @@ const CouponManagement = () => {
         </div>
 
         <div className="sm:col-span-2 lg:col-span-3">
-          <label className="block text-sm font-medium text-gray-700">
+          <label className="block text-sm font-medium ">
             Description
           </label>
           <textarea
@@ -161,19 +161,19 @@ const CouponManagement = () => {
         </div>
       </form>
 
-      <table className="min-w-full bg-white border border-gray-200 rounded-lg overflow-hidden">
-        <thead className="bg-gray-100">
+      <table className="min-w-full border rounded-lg overflow-hidden">
+        <thead className=" backdrop-brightness-150">
           <tr>
-            <th className="px-4 sm:px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">
+            <th className="px-4 sm:px-6 py-3 text-left text-xs font-medium  uppercase tracking-wider">
               Code
             </th>
-            <th className="px-4 sm:px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">
+            <th className="px-4 sm:px-6 py-3 text-left text-xs font-medium  uppercase tracking-wider">
               Discount
             </th>
-            <th className="px-4 sm:px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">
+            <th className="px-4 sm:px-6 py-3 text-left text-xs font-medium  uppercase tracking-wider">
               Expiry Date
             </th>
-            <th className="px-4 sm:px-6 py-3 text-right text-xs font-medium text-gray-500 uppercase tracking-wider">
+            <th className="px-4 sm:px-6 py-3 text-right text-xs font-medium  uppercase tracking-wider">
               Action
             </th>
           </tr>
@@ -181,14 +181,14 @@ const CouponManagement = () => {
         <tbody>
           {couponsData.data && couponsData.data.length > 0 ? (
             couponsData.data.map((coupon: CouponFormData) => (
-              <tr key={coupon.code} className="hover:bg-gray-50">
-                <td className="px-4 sm:px-6 py-4 whitespace-nowrap text-sm font-medium text-gray-900">
+              <tr key={coupon.code} className="">
+                <td className="px-4 sm:px-6 py-4 whitespace-nowrap text-sm font-medium ">
                   {coupon.code}
                 </td>
-                <td className="px-4 sm:px-6 py-4 whitespace-nowrap text-sm text-gray-700">
+                <td className="px-4 sm:px-6 py-4 whitespace-nowrap text-sm ">
                   {coupon.discount}%
                 </td>
-                <td className="px-4 sm:px-6 py-4 whitespace-nowrap text-sm text-gray-700">
+                <td className="px-4 sm:px-6 py-4 whitespace-nowrap text-sm ">
                   {new Date(coupon.expiryDate).toLocaleDateString()}
                 </td>
                 <td className="px-4 sm:px-6 py-4 whitespace-nowrap text-right text-sm font-medium">
@@ -205,7 +205,7 @@ const CouponManagement = () => {
             <tr>
               <td
                 colSpan={4}
-                className="px-4 sm:px-6 py-4 text-center text-sm text-gray-500"
+                className="px-4 sm:px-6 py-4 text-center text-sm"
               >
                 No coupons available
               </td>

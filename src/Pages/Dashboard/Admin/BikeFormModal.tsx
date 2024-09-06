@@ -79,9 +79,9 @@ const BikeFormModal = ({ bikeData, onClose }: BikeFormModalProps) => {
   };
 
   return (
-    <div className="fixed inset-0 bg-gray-600 bg-opacity-50 flex justify-center items-center">
-      <div className="bg-white p-8 rounded-lg shadow-md w-96">
-        <h2 className="text-xl font-bold mb-4">
+    <div className="fixed inset-0 bg-gray-600 bg-opacity-50 flex justify-center items-center font-[Roboto]">
+      <div className="backdrop-blur-lg backdrop-brightness-110 p-8 rounded-lg shadow-md w-96">
+        <h2 className="text-2xl font-bold mb-4">
           {bikeData ? "Edit Bike" : "Add Bike"}
         </h2>
         <form onSubmit={handleSubmit}>

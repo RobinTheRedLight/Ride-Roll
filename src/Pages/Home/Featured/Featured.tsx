@@ -28,7 +28,7 @@ const Featured = () => {
   return (
     <div className="py-12">
       <div className="max-w-7xl mx-auto px-0 md:px-8">
-        <h2 className="text-4xl lg:text-5xl text-gray-800 mb-8 text-center font-[Oswald]">
+        <h2 className="text-4xl lg:text-5xl  mb-8 text-center font-[Oswald]">
           Available Bikes
         </h2>
         <div className="grid grid-cols-1 md:grid-cols-3 font-[Roboto]">
@@ -49,15 +49,15 @@ const Featured = () => {
               />
               <div className="mt-4">
                 <h3 className="text-xl font-bold mb-2">{bike.name}</h3>
-                <p className="text-gray-600 mb-2">{bike.model}</p>
+                <p className=" mb-2">{bike.model}</p>
 
-                <p className="text-gray-800 mb-2">Brand: {bike.brand}</p>
+                <p className=" mb-2">Brand: {bike.brand}</p>
 
-                <p className="text-gray-900 font-bold mb-4">
+                <p className=" font-bold mb-4">
                   ৳{bike.pricePerHour}
                 </p>
                 <Link to={`/bikes/${bike._id}`}>
-                  <button className="bg-black text-white px-4 py-2 rounded hover:bg-slate-700">
+                  <button className="btn btn-primary">
                     View Details
                   </button>
                 </Link>
@@ -67,7 +67,7 @@ const Featured = () => {
         </div>
         <div className="text-center mt-8">
           <Link to="/bikes">
-            <button className="bg-black text-white px-6 py-3 rounded hover:bg-slate-700">
+            <button className="btn btn-primary">
               View All
             </button>
           </Link>

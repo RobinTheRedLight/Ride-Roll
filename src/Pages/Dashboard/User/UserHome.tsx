@@ -65,9 +65,9 @@ const UserHome = () => {
         </div>
       </div>
 
-      <div className="bg-white shadow-lg rounded-lg p-6 max-w-md lg:max-w-full mx-auto my-4">
+      <div className=" shadow-lg rounded-lg p-6 max-w-md lg:max-w-full mx-auto my-4 border">
         <h2 className="text-2xl font-semibold mb-4">User Details</h2>
-        <div className="text-gray-700">
+        <div className="">
           <div className="mb-2">
             <span className="font-semibold">Name: </span>
             {user.name}
@@ -90,7 +90,7 @@ const UserHome = () => {
       <div className="text-center">
         <button
           onClick={() => handleEditProfile(user)}
-          className="bg-black text-white btn btn-sm md:btn-md"
+          className=" btn btn-primary  btn-sm md:btn-md"
         >
           Edit
         </button>

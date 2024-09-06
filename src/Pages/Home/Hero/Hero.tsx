@@ -47,7 +47,7 @@ const Hero = () => {
 
         {/* Call to Action Button */}
         <Link to="/bikes">
-          <button className="bg-[#ec3c10] hover:bg-orange-500 text-white font-bold py-3 px-8 rounded-full mb-4">
+          <button className="btn btn-primary btn-md   mb-4">
             Book a Ride!
           </button>
         </Link>
@@ -59,11 +59,11 @@ const Hero = () => {
             placeholder="Search bike availability..."
             value={searchTerm}
             onChange={(e) => setSearchTerm(e.target.value)}
-            className="flex-grow px-4 py-2 text-black rounded-l-full focus:outline-none"
+            className="flex-grow px-4 py-2 text-black rounded-l-full focus:outline-none bg-white"
           />
           <button
             onClick={handleSearch}
-            className="bg-[#ec3c10] text-white px-4 py-2 rounded-full"
+            className="btn btn-primary px-4 py-2 rounded-full"
           >
             Search
           </button>

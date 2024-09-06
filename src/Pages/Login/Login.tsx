@@ -52,10 +52,10 @@ const Login = () => {
   };
 
   return (
-    <div className="min-h-screen flex items-center justify-center bg-gray-100 font-[Roboto]">
+    <div className="min-h-screen flex items-center justify-center font-[Roboto]">
       <form
         onSubmit={handleSubmit(onSubmit)}
-        className="bg-white p-8 rounded shadow-md w-96"
+        className=" p-8 rounded shadow-md w-96"
       >
         <h2 className="text-3xl lg:text-4xl mb-6 text-center font-[Oswald]">
           Login
@@ -63,7 +63,7 @@ const Login = () => {
 
         {/* Email Field */}
         <div className="mb-4">
-          <label className="block text-gray-700" htmlFor="email">
+          <label className="block" htmlFor="email">
             Email
           </label>
           <input
@@ -76,8 +76,8 @@ const Login = () => {
                 message: "Invalid email address",
               },
             })}
-            className={`w-full px-3 py-2 border rounded ${
-              errors.email ? "border-red-500" : "border-gray-300"
+            className={`w-full px-3 py-2 border rounded  ${
+              errors.email ? "border-red-500" : "border"
             }`}
           />
           {errors.email && (
@@ -87,15 +87,15 @@ const Login = () => {
 
         {/* Password Field */}
         <div className="mb-4">
-          <label className="block text-gray-700" htmlFor="password">
+          <label className="block" htmlFor="password">
             Password
           </label>
           <input
             id="password"
             type="password"
             {...register("password", { required: "Password is required" })}
-            className={`w-full px-3 py-2 border rounded ${
-              errors.password ? "border-red-500" : "border-gray-300"
+            className={`w-full px-3 py-2 border rounded   ${
+              errors.password ? "border-red-500" : "border"
             }`}
           />
           {errors.password && (
@@ -107,13 +107,13 @@ const Login = () => {
 
         <button
           type="submit"
-          className="w-full bg-blue-500 text-white py-2 rounded hover:bg-blue-600"
+          className="w-full btn btn-primary"
         >
           Login
         </button>
 
         <p className="text-sm text-center mt-4">
-          Don't have an account?{" "}
+          <span className=""> Don't have an account? </span>
           <Link to="/signup" className="text-blue-500 hover:underline">
             Sign Up
           </Link>
