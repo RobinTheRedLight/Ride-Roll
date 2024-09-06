@@ -80,7 +80,7 @@ const ReturnBikeCard = ({ rental, onUpdate }: RentalProps) => {
         </div>
         <button
           onClick={onUpdate}
-          className="bg-yellow-500 text-white px-4 py-2 rounded hover:bg-yellow-600 mr-2"
+          className="bg-black text-white px-4 py-2 rounded hover:bg-gray-700 mr-2"
         >
           Calculate
         </button>

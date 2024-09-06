@@ -1,6 +1,7 @@
 import { useState } from "react";
 import { useGetRentalsQuery } from "../../../redux/features/user/userApi";
 import RentalCard from "./RentalCard";
+import { Helmet } from "react-helmet-async";
 
 const tabStyle = {
   padding: "10px 20px",
@@ -49,6 +50,9 @@ const Rental = () => {
 
   return (
     <div className=" p-10 font-[Roboto]">
+      <Helmet>
+        <title>Dashboard | My rentals</title>
+      </Helmet>
       <h1 className="text-4xl lg:text-5xl font-[Oswald]">My Rentals</h1>
       <div style={{ display: "flex" }} className="mt-5">
         {/* Tabs */}
@@ -84,16 +88,16 @@ const Rental = () => {
 
         {activeTab === "Paid" && (
           <div className="container mx-auto">
-          <div className="grid gap-0  grid-cols-1 md:grid-cols-2  place-items-center">
-            {paidRentals.length === 0 ? (
-              <p className="text-center text-xl">No rentals found.</p>
-            ) : (
-              paidRentals.map((rental: Rental) => (
-                <RentalCard key={rental._id} rental={rental} />
-              ))
-            )}
+            <div className="grid gap-0  grid-cols-1 md:grid-cols-2  place-items-center">
+              {paidRentals.length === 0 ? (
+                <p className="text-center text-xl">No rentals found.</p>
+              ) : (
+                paidRentals.map((rental: Rental) => (
+                  <RentalCard key={rental._id} rental={rental} />
+                ))
+              )}
+            </div>
           </div>
-        </div>
         )}
       </div>
     </div>

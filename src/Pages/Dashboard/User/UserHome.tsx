@@ -6,6 +6,7 @@ import {
 } from "../../../redux/features/user/userApi";
 import UserHomeModal from "./UserHomeModal";
 import Swal from "sweetalert2";
+import { Helmet } from "react-helmet-async";
 
 const UserHome = () => {
   const { data, isLoading, refetch } = useGetProfileQuery(undefined);
@@ -51,7 +52,10 @@ const UserHome = () => {
   };
 
   return (
-    <div className="font-[Roboto]">
+    <div className="font-[Roboto] max-w-3xl mx-auto">
+      <Helmet>
+        <title>Dashboard | {user.name}</title>
+      </Helmet>
       <div className="text-center">
         <div className="stats shadow">
           <div className="stat w-[330px] md:w-[700px]">

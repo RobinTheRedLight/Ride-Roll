@@ -1,3 +1,5 @@
+import { motion } from "framer-motion";
+import { fadeLeft } from "../../../Animation/constant";
 type Testimonial = {
   id: number;
   quote: string;
@@ -28,12 +30,17 @@ const Testimonials = () => {
   return (
     <div className="py-12 bg-white">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-        <h2 className="text-3xl lg:text-4xl text-gray-800 mb-8 text-center font-[Oswald]">
+        <h2 className="text-3xl lg:text-5xl text-gray-800 mb-8 text-center font-[Oswald]">
           What Our Customers Say
         </h2>
-        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8 font-[Roboto]">
+        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8 font-[Roboto] md:mt-10">
           {testimonials.map((testimonial) => (
-            <div
+            <motion.div
+              variants={fadeLeft}
+              initial="hidden"
+              whileInView="show"
+              viewport={{ once: true }}
+              whileTap={{ scale: 0.95 }}
               key={testimonial.id}
               className="bg-gray-100 p-6 rounded-lg shadow-lg"
             >
@@ -43,7 +50,7 @@ const Testimonials = () => {
               <p className="text-right text-gray-900 font-bold">
                 - {testimonial.customerName}
               </p>
-            </div>
+            </motion.div>
           ))}
         </div>
       </div>

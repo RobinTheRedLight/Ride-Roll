@@ -1,6 +1,7 @@
 import { useState } from "react";
 import { useGetBikesQuery } from "../../../redux/features/user/userApi";
 import Card from "./Card";
+import { Helmet } from "react-helmet-async";
 
 type Product = {
   _id: string;
@@ -12,6 +13,7 @@ type Product = {
   year: number;
   model: string;
   brand: string;
+  img: string;
 };
 
 const ManageBikes = () => {
@@ -20,11 +22,13 @@ const ManageBikes = () => {
   const [filter, setFilter] = useState({
     brand: "",
     model: "",
-    availability: null,
+    availability: "",
   });
 
   if (isLoading) {
-    return <span className="loading loading-ring loading-lg h-full mx-auto"></span>;
+    return (
+      <span className="loading loading-ring loading-lg h-full mx-auto"></span>
+    );
   }
   const bikes = data.data;
 
@@ -47,7 +51,7 @@ const ManageBikes = () => {
     setFilter({
       brand: "",
       model: "",
-      availability: null,
+      availability: "",
     });
   };
 
@@ -56,17 +60,22 @@ const ManageBikes = () => {
       product.name.toLowerCase().includes(searchTerm.toLowerCase()) &&
       (filter.brand ? product.brand === filter.brand : true) &&
       (filter.model ? product.model === filter.model : true) &&
-      (filter.availability ? product.isAvailable === filter.availability : true)
+      (filter.availability
+        ? product.isAvailable.toString() === filter.availability
+        : true)
     );
   });
 
   return (
     <div className="container mx-auto px-4 py-16">
+      <Helmet>
+        <title>Dashboard | Bike Management</title>
+      </Helmet>
       <h2 className="text-3xl md:text-5xl mb-8 text-center font-[oswald]">
         All Bikes
       </h2>
 
-      <div className="flex flex-col md:flex-row justify-between items-center mb-4">
+      <div className="flex flex-col md:flex-row justify-between items-center mb-4 max-w-[976px]">
         <input
           type="text"
           placeholder="Search products..."
@@ -84,7 +93,7 @@ const ManageBikes = () => {
             <option value="">All Brands</option>
             <option value="Honda">Honda</option>
             <option value="Suzuki">Suzuki</option>
-            <option value="Hero">Hero</option>
+            <option value="Kawasaki">Kawasaki</option>
             <option value="Yamaha">Yamaha</option>
           </select>
           <select
@@ -99,6 +108,16 @@ const ManageBikes = () => {
             <option value="Touring">Touring</option>
             <option value="Off-road">Off-road</option>
           </select>
+          <select
+            name="availability"
+            value={filter.availability}
+            onChange={handleFilterChange}
+            className="p-2 border border-gray-300 rounded w-full md:w-auto"
+          >
+            <option value="">All Availability</option>
+            <option value="true">Available</option>
+            <option value="false">Unavailable</option>
+          </select>
           <button
             onClick={handleClearFilters}
             className="p-2 border border-gray-300 rounded bg-red-500 text-white w-full md:w-auto"
@@ -108,15 +127,17 @@ const ManageBikes = () => {
         </div>
       </div>
 
-      <div className="grid gap-0 md:gap-4 grid-cols-1 md:grid-cols-2 lg:grid-cols-3  place-items-center ">
-        {filteredProducts.length === 0 ? (
-          <p className="text-center text-xl">No products found.</p>
-        ) : (
-          filteredProducts.map((product: Product) => (
+      {filteredProducts.length === 0 ? (
+        <div className="flex items-center justify-center h-full">
+          <p className="text-xl">No products found.</p>
+        </div>
+      ) : (
+        <div className="grid gap-0 md:gap-4 grid-cols-1 md:grid-cols-2 lg:grid-cols-3  place-items-center ">
+          {filteredProducts.map((product: Product) => (
             <Card key={product._id} product={product} />
-          ))
-        )}
-      </div>
+          ))}
+        </div>
+      )}
     </div>
   );
 };

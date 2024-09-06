@@ -4,6 +4,7 @@ import {
   useUpdateRentalMutation,
 } from "../../../redux/features/admin/adminApi";
 import ReturnBikeCard from "./ReturnBikeCard";
+import { Helmet } from "react-helmet-async";
 
 type Rental = {
   _id: string;
@@ -44,6 +45,9 @@ const ReturnBike = () => {
 
   return (
     <div className="container mx-auto px-4 py-16">
+      <Helmet>
+        <title>Dashboard | Return Bike</title>
+      </Helmet>
       <h2 className="text-3xl md:text-5xl mb-8 text-center font-[oswald]">
         All Rentals
       </h2>

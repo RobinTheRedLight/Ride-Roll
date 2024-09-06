@@ -14,6 +14,7 @@ type BikeFormModalProps = {
     year: number;
     model: string;
     brand: string;
+    img: string;
   } | null;
   onClose: () => void;
 };
@@ -27,6 +28,7 @@ const BikeFormModal = ({ bikeData, onClose }: BikeFormModalProps) => {
     year: 0,
     model: "",
     brand: "",
+    img: "",
   });
 
   const [addBike] = useAddBikeMutation();
@@ -42,6 +44,7 @@ const BikeFormModal = ({ bikeData, onClose }: BikeFormModalProps) => {
         year: bikeData.year,
         model: bikeData.model,
         brand: bikeData.brand,
+        img: bikeData.img,
       });
     }
   }, [bikeData]);
@@ -88,6 +91,15 @@ const BikeFormModal = ({ bikeData, onClose }: BikeFormModalProps) => {
             value={formData.name}
             onChange={handleChange}
             placeholder="Enter bike name"
+            className="w-full p-2 mb-2 border rounded"
+            required
+          />
+          <input
+            type="text"
+            name="img"
+            value={formData.img}
+            onChange={handleChange}
+            placeholder="Enter bike image link"
             className="w-full p-2 mb-2 border rounded"
             required
           />
@@ -154,7 +166,7 @@ const BikeFormModal = ({ bikeData, onClose }: BikeFormModalProps) => {
             <option value="">Select Brand</option>
             <option value="Honda">Honda</option>
             <option value="Suzuki">Suzuki</option>
-            <option value="Hero">Hero</option>
+            <option value="Kawasaki">Kawasaki</option>
             <option value="Yamaha">Yamaha</option>
           </select>
           <button

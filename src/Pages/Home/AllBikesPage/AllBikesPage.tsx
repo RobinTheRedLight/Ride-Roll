@@ -1,8 +1,7 @@
-import { useState } from "react";
+import { useState, useEffect } from "react";
+import { useLocation } from "react-router-dom";
 import { useGetBikesQuery } from "../../../redux/features/user/userApi";
-import AllBikesCard from "./AllBikesCard";
-import BikeFormModal from "./BikeFormModal";
-import { useDeleteBikeMutation } from "../../../redux/features/admin/adminApi";
+import AllBikesPageCard from "./AllBikesPageCard";
 import { Helmet } from "react-helmet-async";
 
 type Product = {
@@ -18,18 +17,22 @@ type Product = {
   img: string;
 };
 
-const AllBikes = () => {
+const ManageBikes = () => {
   const { data, isLoading } = useGetBikesQuery(undefined);
+  const location = useLocation();
   const [searchTerm, setSearchTerm] = useState("");
-  const [deleteBike] = useDeleteBikeMutation();
   const [filter, setFilter] = useState({
     brand: "",
     model: "",
     availability: "",
   });
 
-  const [showModal, setShowModal] = useState(false);
-  const [selectedBike, setSelectedBike] = useState<Product | null>(null);
+  // Get the search term from URL query params
+  useEffect(() => {
+    const params = new URLSearchParams(location.search);
+    const searchQuery = params.get("search") || "";
+    setSearchTerm(searchQuery);
+  }, [location]);
 
   if (isLoading) {
     return (
@@ -38,7 +41,6 @@ const AllBikes = () => {
   }
 
   const bikes = data.data;
-  console.log(bikes);
 
   const handleSearch = (event: React.ChangeEvent<HTMLInputElement>) => {
     setSearchTerm(event.target.value);
@@ -63,26 +65,6 @@ const AllBikes = () => {
     });
   };
 
-  const handleCreateBike = () => {
-    setSelectedBike(null);
-    setShowModal(true);
-  };
-
-  const handleEditBike = (bike: Product) => {
-    setSelectedBike(bike);
-    setShowModal(true);
-  };
-
-  const handleDeleteBike = async (id: string) => {
-    if (window.confirm("Are you sure you want to delete this bike?")) {
-      try {
-        await deleteBike(id).unwrap();
-      } catch (error) {
-        console.error("Failed to delete bike:", error);
-      }
-    }
-  };
-
   const filteredProducts = bikes.filter((product: Product) => {
     return (
       product.name.toLowerCase().includes(searchTerm.toLowerCase()) &&
@@ -97,18 +79,11 @@ const AllBikes = () => {
   return (
     <div className="container mx-auto px-4 py-16">
       <Helmet>
-        <title>Dashboard | Bike Management</title>
+        <title>Ride & Roll | Bikes</title>
       </Helmet>
-      <h2 className="text-3xl md:text-5xl mb-8 text-center font-[oswald]">
+      <h2 className="text-3xl md:text-5xl mb-8 text-center font-[oswald] ">
         All Bikes
       </h2>
-
-      <button
-        onClick={handleCreateBike}
-        className="p-2 mb-4 border border-gray-300 rounded bg-blue-500 text-white"
-      >
-        Create Bike
-      </button>
 
       <div className="flex flex-col md:flex-row justify-between items-center mb-4">
         <input
@@ -137,7 +112,7 @@ const AllBikes = () => {
             onChange={handleFilterChange}
             className="p-2 border border-gray-300 rounded w-full md:w-auto"
           >
-            <option value="">All Models</option>
+            <option value="">All Types</option>
             <option value="Standard">Standard</option>
             <option value="Sport">Sport</option>
             <option value="Touring">Touring</option>
@@ -169,24 +144,12 @@ const AllBikes = () => {
       ) : (
         <div className="grid gap-0 md:gap-4 grid-cols-1 md:grid-cols-2 lg:grid-cols-3 place-items-center">
           {filteredProducts.map((product: Product) => (
-            <AllBikesCard
-              key={product._id}
-              product={product}
-              onEdit={() => handleEditBike(product)}
-              onDelete={() => handleDeleteBike(product._id)}
-            />
+            <AllBikesPageCard key={product._id} product={product} />
           ))}
         </div>
-      )}
-
-      {showModal && (
-        <BikeFormModal
-          bikeData={selectedBike}
-          onClose={() => setShowModal(false)}
-        />
       )}
     </div>
   );
 };
 
-export default AllBikes;
+export default ManageBikes;

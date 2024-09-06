@@ -9,17 +9,19 @@ type CardProps = {
     year: number;
     model: string;
     brand: string;
+    img: string;
   };
   onEdit: () => void;
   onDelete: () => void;
 };
 
 const AllBikesCard = ({ product, onEdit, onDelete }: CardProps) => {
-  const { name, description, pricePerHour, isAvailable, model, brand } =
+  const { name, description, pricePerHour, isAvailable, model, brand, img } =
     product;
 
   return (
-    <div className="border border-gray-300 rounded-lg p-4 m-4 w-72 text-center shadow-lg font-[Roboto]">
+    <div className="border border-gray-300 rounded-lg p-4 m-4 w-80 text-center shadow-lg font-[Roboto]">
+      <img src={img} alt={name} className="w-full h-48 object-cover rounded" />
       <div className="mt-4">
         <h3 className="text-xl font-bold mb-2">{name}</h3>
         <p className="text-gray-600 mb-2">{model}</p>

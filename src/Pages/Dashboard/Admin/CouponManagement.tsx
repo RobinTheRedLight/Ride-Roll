@@ -6,6 +6,7 @@ import {
   useGetAllCouponsQuery,
 } from "../../../redux/features/admin/adminApi";
 import Swal from "sweetalert2";
+import { Helmet } from "react-helmet-async";
 
 interface CouponFormData {
   _id?: string;
@@ -68,6 +69,9 @@ const CouponManagement = () => {
 
   return (
     <div className="max-w-4xl md:w-full mx-auto mt-0 lg:mt-5 p-4 sm:p-8 bg-white shadow-lg rounded-lg font-[Roboto]">
+      <Helmet>
+        <title>Dashboard | Coupon Management</title>
+      </Helmet>
       <h1 className="text-2xl sm:text-3xl lg:text-4xl text-center text-gray-800 mb-6 font-[Oswald]">
         Coupon Management
       </h1>

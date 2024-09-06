@@ -6,11 +6,8 @@ import Testimonials from "../Testimonials/Testimonials";
 import ChooseUs from "../ChooseUs/ChooseUs";
 import Discount from "../Discount/Discount";
 import ContactUs from "../ContactUs/ContactUs";
-import { useAppSelector } from "../../../redux/hooks";
-import { selectCurrentUser } from "../../../redux/features/auth/authSlice";
 
 const Home = () => {
-  const user = useAppSelector(selectCurrentUser) as any;
   return (
     <div>
       <Helmet>
@@ -20,11 +17,7 @@ const Home = () => {
       <Featured />
       <Testimonials />
       <ChooseUs />
-      {user && (
-        <>
-          <Discount />
-        </>
-      )}
+      <Discount />
       <ContactUs />
     </div>
   );

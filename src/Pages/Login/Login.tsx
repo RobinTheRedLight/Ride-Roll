@@ -1,5 +1,5 @@
 import { useForm, SubmitHandler } from "react-hook-form";
-import { useNavigate } from "react-router-dom";
+import { useNavigate, Link } from "react-router-dom";
 import Swal from "sweetalert2";
 import { LoginFormInputs } from "../../types";
 import { useLoginMutation } from "../../redux/features/auth/authApi";
@@ -57,7 +57,7 @@ const Login = () => {
         onSubmit={handleSubmit(onSubmit)}
         className="bg-white p-8 rounded shadow-md w-96"
       >
-        <h2 className="text-3xl lg:text-4xl  mb-6 text-center font-[Oswald]">
+        <h2 className="text-3xl lg:text-4xl mb-6 text-center font-[Oswald]">
           Login
         </h2>
 
@@ -111,6 +111,13 @@ const Login = () => {
         >
           Login
         </button>
+
+        <p className="text-sm text-center mt-4">
+          Don't have an account?{" "}
+          <Link to="/signup" className="text-blue-500 hover:underline">
+            Sign Up
+          </Link>
+        </p>
       </form>
     </div>
   );

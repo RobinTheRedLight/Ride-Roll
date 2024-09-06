@@ -1,7 +1,6 @@
 import React from "react";
 import { NavLink, Outlet } from "react-router-dom";
-import { FaShoppingCart, FaHome, FaUsers } from "react-icons/fa";
-import { IoMenu } from "react-icons/io5";
+import { FaHome, FaUsers } from "react-icons/fa";
 import { BiKey } from "react-icons/bi";
 import { MdOutlineDirectionsBike } from "react-icons/md";
 import { useAppSelector } from "../redux/hooks";
@@ -88,27 +87,12 @@ const Dashboard: React.FC = () => {
                   <BiKey /> My Rentals
                 </NavLink>
               </li>
-              <li>
-                <NavLink onClick={closeDrawer} to="mycart">
-                  <FaShoppingCart /> My Cart
-                </NavLink>
-              </li>
             </>
           )}
           <div className="divider"></div>
           <li>
             <NavLink onClick={closeDrawer} to="/">
               <FaHome /> Home
-            </NavLink>
-          </li>
-          <li>
-            <NavLink onClick={closeDrawer} to="/menu">
-              <IoMenu /> Our Menu
-            </NavLink>
-          </li>
-          <li>
-            <NavLink onClick={closeDrawer} to="/shop/salads">
-              <FaShoppingCart /> Order Food
             </NavLink>
           </li>
         </ul>

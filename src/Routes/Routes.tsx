@@ -4,7 +4,6 @@ import Home from "../Pages/Home/Home/Home";
 import SignUp from "../Pages/SignUp/SignUp";
 import Login from "../Pages/Login/Login";
 import AboutUs from "../Pages/AboutUs/AboutUs";
-import Temp from "../Pages/Temp/Temp";
 import ProtectedRoute from "./AdminRoute";
 import Dashboard from "../Layout/Dashboard";
 import PrivateRoute from "./PrivateRoute";
@@ -19,6 +18,8 @@ import AllUsers from "../Pages/Dashboard/Admin/AllUsers";
 import ReturnBike from "../Pages/Dashboard/Admin/ReturnBike";
 import NotFound from "../components/NotFound";
 import CouponManagement from "../Pages/Dashboard/Admin/CouponManagement";
+import AllBikesPage from "../Pages/Home/AllBikesPage/AllBikesPage";
+import DetailsOfBike from "../Pages/Home/DetailsOfBike/DetailsOfBike";
 
 export const router = createBrowserRouter([
   {
@@ -34,12 +35,12 @@ export const router = createBrowserRouter([
         element: <AboutUs></AboutUs>,
       },
       {
-        path: "/temp",
-        element: (
-          <ProtectedRoute>
-            <Temp></Temp>
-          </ProtectedRoute>
-        ),
+        path: "/bikes",
+        element: <AllBikesPage></AllBikesPage>,
+      },
+      {
+        path: "/bikes/:id",
+        element: <DetailsOfBike></DetailsOfBike>,
       },
     ],
   },

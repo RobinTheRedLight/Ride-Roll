@@ -1,3 +1,4 @@
+import { Helmet } from "react-helmet-async";
 import img1 from "../../assets/aboutUs/img1.png";
 import img2 from "../../assets/aboutUs/img2.png";
 
@@ -45,6 +46,9 @@ const milestones: Milestone[] = [
 const AboutUs = () => {
   return (
     <div className="py-12 bg-gray-50 font-[Roboto]">
+      <Helmet>
+        <title>Ride & Roll || About</title>
+      </Helmet>
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         {/* Mission Statement */}
         <section className="mb-12">
