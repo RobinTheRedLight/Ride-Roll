@@ -6,18 +6,9 @@ import {
 } from "../../../redux/features/admin/adminApi";
 import { FaTrashAlt, FaUserShield } from "react-icons/fa";
 import Swal from "sweetalert2";
+import { User } from "../../../types";
 
-type User = {
-  _id: string;
-  name: string;
-  email: string;
-  phone: string;
-  address: string;
-  role: string;
-  createdAt: string;
-  updatedAt: string;
-  __v: number;
-};
+
 
 const AllUsers = () => {
   const { data, isLoading } = useGetAllUsersQuery(undefined);

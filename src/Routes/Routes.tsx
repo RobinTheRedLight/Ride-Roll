@@ -20,6 +20,7 @@ import NotFound from "../components/NotFound";
 import CouponManagement from "../Pages/Dashboard/Admin/CouponManagement";
 import AllBikesPage from "../Pages/Home/AllBikesPage/AllBikesPage";
 import DetailsOfBike from "../Pages/Home/DetailsOfBike/DetailsOfBike";
+import { BikeComparison } from "../Pages/Dashboard/User/BikeComparison";
 
 export const router = createBrowserRouter([
   {
@@ -75,6 +76,10 @@ export const router = createBrowserRouter([
       {
         path: "rentals",
         element: <Rental></Rental>,
+      },
+      {
+        path: "compare",
+        element: <BikeComparison></BikeComparison>,
       },
       {
         path: "admin/bikes",

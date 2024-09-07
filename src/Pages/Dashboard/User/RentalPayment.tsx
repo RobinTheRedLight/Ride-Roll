@@ -9,15 +9,10 @@ import {
 } from "../../../redux/features/user/userSlice";
 import { useEffect, useState } from "react";
 import { useGetAllCouponsQuery } from "../../../redux/features/admin/adminApi";
+import { Coupon } from "../../../types";
 const stripePromise = loadStripe(import.meta.env.VITE_Payment_Gateway_PK);
 
-type Coupon = {
-  _id: string;
-  code: string;
-  discount: number;
-  expiryDate: Date;
-  description: string;
-};
+
 
 const RentalPayment = () => {
   const { data, isLoading } = useGetAllCouponsQuery(undefined);

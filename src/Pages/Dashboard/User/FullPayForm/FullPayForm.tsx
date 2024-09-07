@@ -3,6 +3,7 @@ import { CardElement, useElements, useStripe } from "@stripe/react-stripe-js";
 import { useUpdatePaymentMutation } from "../../../../redux/features/user/userApi";
 import { useEffect, useState } from "react";
 import Swal from "sweetalert2";
+import { useNavigate } from "react-router-dom";
 
 interface FullPayFormProps {
   bookingData: {
@@ -24,6 +25,7 @@ const FullPayForm: React.FC<FullPayFormProps> = ({ bookingData }) => {
   const [clientSecret, setClientSecret] = useState<string>("");
   const [processing, setProcessing] = useState<boolean>(false);
   const [transactionId, setTransactionId] = useState<string>("");
+  const navigate = useNavigate();
 
   useEffect(() => {
     if (price > 0) {
@@ -109,6 +111,8 @@ const FullPayForm: React.FC<FullPayFormProps> = ({ bookingData }) => {
         showConfirmButton: false,
         timer: 1500,
       });
+
+      navigate("/dashboard/rentals");
     }
 
     setProcessing(false);

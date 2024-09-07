@@ -2,25 +2,24 @@ import { Link } from "react-router-dom";
 import { useGetBikesQuery } from "../../../redux/features/user/userApi";
 import { motion } from "framer-motion";
 import { fadeLeft } from "../../../Animation/constant";
+import { Bike } from "../../../types";
 
-type Bike = {
-  _id: string;
-  name: string;
-  description: string;
-  pricePerHour: number;
-  isAvailable: boolean;
-  cc: number;
-  year: number;
-  model: string;
-  brand: string;
-  img: string;
-};
 
 const Featured = () => {
   const { data, isLoading } = useGetBikesQuery(undefined);
   if (isLoading) {
     return (
       <span className="loading loading-ring loading-lg h-full mx-auto"></span>
+    );
+  } else if (!data.data || data.data.length === 0) {
+    return (
+      <div className="py-12">
+        <div className="max-w-7xl mx-auto px-0 md:px-8">
+          <h2 className="text-4xl lg:text-5xl  mb-8 text-center font-[Oswald]">
+            No Bikes Available
+          </h2>
+        </div>
+      </div>
     );
   }
   const bikes = data.data.slice(0, 6);

@@ -2,19 +2,7 @@ import { useState } from "react";
 import { useGetBikesQuery } from "../../../redux/features/user/userApi";
 import Card from "./Card";
 import { Helmet } from "react-helmet-async";
-
-type Product = {
-  _id: string;
-  name: string;
-  description: string;
-  pricePerHour: number;
-  isAvailable: boolean;
-  cc: number;
-  year: number;
-  model: string;
-  brand: string;
-  img: string;
-};
+import { Bike } from "../../../types";
 
 const ManageBikes = () => {
   const { data, isLoading } = useGetBikesQuery(undefined);
@@ -55,7 +43,7 @@ const ManageBikes = () => {
     });
   };
 
-  const filteredProducts = bikes.filter((product: Product) => {
+  const filteredProducts = bikes.filter((product: Bike) => {
     return (
       product.name.toLowerCase().includes(searchTerm.toLowerCase()) &&
       (filter.brand ? product.brand === filter.brand : true) &&
@@ -133,7 +121,7 @@ const ManageBikes = () => {
         </div>
       ) : (
         <div className="grid gap-0 md:gap-4 grid-cols-1 md:grid-cols-2 lg:grid-cols-3  place-items-center ">
-          {filteredProducts.map((product: Product) => (
+          {filteredProducts.map((product: Bike) => (
             <Card key={product._id} product={product} />
           ))}
         </div>

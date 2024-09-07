@@ -35,7 +35,7 @@ const Login = () => {
           timer: 1500,
         });
 
-        navigate("/");
+        navigate("/dashboard/profile");
       }
     } catch (error) {
       const errorMessage = (
@@ -105,10 +105,7 @@ const Login = () => {
           )}
         </div>
 
-        <button
-          type="submit"
-          className="w-full btn btn-primary"
-        >
+        <button type="submit" className="w-full btn btn-primary">
           Login
         </button>
 

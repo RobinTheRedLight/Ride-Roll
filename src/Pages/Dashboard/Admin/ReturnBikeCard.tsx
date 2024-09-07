@@ -1,5 +1,6 @@
 import moment from "moment";
 import { useGetBikesQuery } from "../../../redux/features/user/userApi";
+import { Bike } from "../../../types";
 
 type RentalProps = {
   rental: {
@@ -18,17 +19,6 @@ type RentalProps = {
   onUpdate: () => void;
 };
 
-type Bike = {
-  _id: string;
-  name: string;
-  description: string;
-  pricePerHour: number;
-  isAvailable: boolean;
-  cc: number;
-  year: number;
-  model: string;
-  brand: string;
-};
 
 const ReturnBikeCard = ({ rental, onUpdate }: RentalProps) => {
   const { data, isLoading } = useGetBikesQuery(undefined);
@@ -73,17 +63,18 @@ const ReturnBikeCard = ({ rental, onUpdate }: RentalProps) => {
             <span className="font-semibold">Total Cost: </span>
             {totalCost}
           </p>
-          <p className=" mb-2">
-            In Stock: {isReturned ? "Yes" : "No"}
-          </p>
+          <p className=" mb-2">In Stock: {isReturned ? "Yes" : "No"}</p>
           <p className=" mb-2">Paid: {isPaid ? "Yes" : "No"}</p>
         </div>
-        <button
-          onClick={onUpdate}
-          className="btn btn-primary mr-2"
-        >
-          Calculate
-        </button>
+        {isReturned ? (
+          <button onClick={onUpdate} className="btn btn-primary mr-2" disabled>
+            Calculate
+          </button>
+        ) : (
+          <button onClick={onUpdate} className="btn btn-primary mr-2">
+            Calculate
+          </button>
+        )}
       </div>
     </div>
   );

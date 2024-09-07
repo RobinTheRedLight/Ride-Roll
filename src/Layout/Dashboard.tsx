@@ -2,6 +2,7 @@ import React, { useEffect, useState } from "react";
 import { NavLink, Outlet } from "react-router-dom";
 import { FaHome, FaUsers } from "react-icons/fa";
 import { BiKey } from "react-icons/bi";
+import { IoIosGitCompare } from "react-icons/io";
 import { MdOutlineDirectionsBike } from "react-icons/md";
 import { useAppSelector } from "../redux/hooks";
 import { selectCurrentUser } from "../redux/features/auth/authSlice";
@@ -129,6 +130,11 @@ const Dashboard: React.FC = () => {
               <li>
                 <NavLink onClick={closeDrawer} to="/dashboard/rentals">
                   <BiKey /> My Rentals
+                </NavLink>
+              </li>
+              <li>
+                <NavLink onClick={closeDrawer} to="/dashboard/compare">
+                  <IoIosGitCompare /> Compare Bikes
                 </NavLink>
               </li>
             </>

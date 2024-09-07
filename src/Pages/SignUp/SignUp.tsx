@@ -1,5 +1,5 @@
 import { useForm, SubmitHandler } from "react-hook-form";
-import { useNavigate, Link } from "react-router-dom"; // Import Link
+import { useNavigate, Link } from "react-router-dom";
 import { SignupFormInputs } from "../../types";
 import { useSignUpMutation } from "../../redux/features/auth/authApi";
 import Swal from "sweetalert2";

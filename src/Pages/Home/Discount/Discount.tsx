@@ -133,30 +133,34 @@ const Discount = () => {
             <h2 className="text-3xl lg:text-4xl mb-8 text-center lg:text-left font-[Oswald]">
               Coupons & Discounts
             </h2>
-            <div className="grid grid-cols-1 md:grid-cols-2 gap-8 font-[Roboto]">
-              {promotions.map((promotion: Promotion) => (
-                <motion.div
-                  variants={fadeLeft}
-                  initial="hidden"
-                  whileInView="show"
-                  viewport={{ once: true }}
-                  whileTap={{ scale: 0.95 }}
-                  key={promotion._id}
-                  className=" p-6 rounded-lg shadow-lg text-center border"
-                >
-                  <p className="text-lg font-bold text-blue-600 mb-4">
-                    Use Code: {promotion.code}
-                  </p>
-                  <p className="mb-4">{promotion.description}</p>
-                  <button
-                    className="mt-4 bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded"
-                    onClick={() => handleCopyCode(promotion.code)}
+            {promotions.length === 0 ? (
+              <p className="text-center">No coupons available.</p>
+            ) : (
+              <div className="grid grid-cols-1 md:grid-cols-2 gap-8 font-[Roboto]">
+                {promotions.map((promotion: Promotion) => (
+                  <motion.div
+                    variants={fadeLeft}
+                    initial="hidden"
+                    whileInView="show"
+                    viewport={{ once: true }}
+                    whileTap={{ scale: 0.95 }}
+                    key={promotion._id}
+                    className=" p-6 rounded-lg shadow-lg text-center border"
                   >
-                    Copy Code
-                  </button>
-                </motion.div>
-              ))}
-            </div>
+                    <p className="text-lg font-bold text-blue-600 mb-4">
+                      Use Code: {promotion.code}
+                    </p>
+                    <p className="mb-4">{promotion.description}</p>
+                    <button
+                      className="mt-4 bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded"
+                      onClick={() => handleCopyCode(promotion.code)}
+                    >
+                      Copy Code
+                    </button>
+                  </motion.div>
+                ))}
+              </div>
+            )}
             <div className="mt-8 text-center ">
               <p className="">
                 To apply a coupon, enter the code at checkout in the coupon

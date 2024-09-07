@@ -1,29 +1,8 @@
 import { Link } from "react-router-dom";
 import { useGetBikesQuery } from "../../../redux/features/user/userApi";
 import moment from "moment";
+import { Bike, Rental } from "../../../types";
 
-type Rental = {
-  _id: string;
-  userId: string;
-  bikeId: string;
-  startTime: string;
-  returnTime: Date | null;
-  totalCost: number;
-  isReturned: boolean;
-  isPaid: boolean;
-};
-
-type Bike = {
-  _id: string;
-  name: string;
-  description: string;
-  pricePerHour: number;
-  isAvailable: boolean;
-  cc: number;
-  year: number;
-  model: string;
-  brand: string;
-};
 
 const RentalCard = ({ rental }: { rental: Rental }) => {
   const { _id, startTime, returnTime, totalCost, isPaid, bikeId, isReturned } =

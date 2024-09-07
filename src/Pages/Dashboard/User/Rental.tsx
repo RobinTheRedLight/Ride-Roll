@@ -2,6 +2,7 @@ import { useState } from "react";
 import { useGetRentalsQuery } from "../../../redux/features/user/userApi";
 import RentalCard from "./RentalCard";
 import { Helmet } from "react-helmet-async";
+import type { Rental } from "../../../types";
 
 const tabStyle = {
   padding: "10px 20px",
@@ -12,17 +13,6 @@ const tabStyle = {
 const activeTabStyle = {
   ...tabStyle,
   borderBottom: "2px solid blue",
-};
-
-type Rental = {
-  _id: string;
-  userId: string;
-  bikeId: string;
-  startTime: string;
-  returnTime: Date;
-  totalCost: number;
-  isReturned: boolean;
-  isPaid: boolean;
 };
 
 const Rental = () => {

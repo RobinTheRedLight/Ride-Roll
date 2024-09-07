@@ -5,20 +5,7 @@ import {
 } from "../../../redux/features/admin/adminApi";
 import ReturnBikeCard from "./ReturnBikeCard";
 import { Helmet } from "react-helmet-async";
-
-type Rental = {
-  _id: string;
-  userId: string;
-  bikeId: string;
-  startTime: string;
-  returnTime: string;
-  totalCost: number;
-  isReturned: boolean;
-  isPaid: boolean;
-  createdAt: string;
-  updatedAt: string;
-  __v: number;
-};
+import { Rental } from "../../../types";
 
 const ReturnBike = () => {
   const { data, isLoading } = useGetAllRentalsQuery(undefined);

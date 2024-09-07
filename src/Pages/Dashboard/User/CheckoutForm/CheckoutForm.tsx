@@ -4,6 +4,7 @@ import { useEffect, useState } from "react";
 import "./CheckoutForm.css";
 import { useAddRentalMutation } from "../../../../redux/features/user/userApi";
 import Swal from "sweetalert2";
+import { useNavigate } from "react-router-dom";
 
 interface CheckoutFormProps {
   bikedData: {
@@ -26,6 +27,7 @@ const CheckoutForm: React.FC<CheckoutFormProps> = ({ bikedData }) => {
   const [clientSecret, setClientSecret] = useState<string>("");
   const [processing, setProcessing] = useState<boolean>(false);
   const [transactionId, setTransactionId] = useState<string>("");
+  const navigate = useNavigate();
 
   useEffect(() => {
     if (price > 0) {
@@ -111,6 +113,7 @@ const CheckoutForm: React.FC<CheckoutFormProps> = ({ bikedData }) => {
         showConfirmButton: false,
         timer: 1500,
       });
+      navigate("/dashboard/rentals");
     }
 
     setProcessing(false);

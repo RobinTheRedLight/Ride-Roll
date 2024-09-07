@@ -2,19 +2,7 @@ import { useState } from "react";
 import { useParams } from "react-router-dom";
 import { useGetBikesQuery } from "../../../redux/features/user/userApi";
 import BookingModal from "./BookingModal";
-
-type Bike = {
-  _id: string;
-  name: string;
-  description: string;
-  pricePerHour: number;
-  isAvailable: boolean;
-  cc: number;
-  year: number;
-  model: string;
-  brand: string;
-  img: string;
-};
+import { Bike } from "../../../types";
 
 const BikeDetails = () => {
   const { id } = useParams<{ id: string }>();
@@ -38,13 +26,13 @@ const BikeDetails = () => {
   const handleModalClose = () => setModalOpen(false);
 
   const handleConfirmBooking = (startTime: string) => {
-    alert(`Booking confirmed! Start time: ${startTime}`);
+    alert(`Your start time is: ${startTime}`);
     setModalOpen(false);
   };
 
   return (
     <div className="container mx-auto mt-12">
-       <h1 className="text-5xl mb-4 font-[Oswald] text-center ">{bike.name}</h1>
+      <h1 className="text-5xl mb-4 font-[Oswald] text-center ">{bike.name}</h1>
       <div className="card lg:card-side bg-base-100 shadow-xl font-[Roboto]">
         <figure className="w-full lg:w-1/2">
           <img
@@ -55,8 +43,6 @@ const BikeDetails = () => {
         </figure>
 
         <div className="card-body lg:w-1/2">
-          
-
           <ul className="space-y-2">
             <li className="text-lg">
               <strong>Description:</strong> {bike.description}

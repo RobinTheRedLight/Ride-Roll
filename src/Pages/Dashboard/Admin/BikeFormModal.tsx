@@ -72,6 +72,7 @@ const BikeFormModal = ({ bikeData, onClose }: BikeFormModalProps) => {
     if (bikeData) {
       await updateBike({ id: bikeData._id, data: formData });
     } else {
+      console.log(formData)
       await addBike(formData);
     }
 

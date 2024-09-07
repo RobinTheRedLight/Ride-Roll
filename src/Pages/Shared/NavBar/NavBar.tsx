@@ -110,7 +110,7 @@ const NavBar = () => {
     <nav className="font-[Roboto] shadow-lg">
       <div className="container mx-auto px-4 py-3 flex justify-between items-center">
         <div className="flex items-center font-[Oswald]">
-          <img src={logo} alt="Logo" />
+          <img src={logo} alt="Logo" onClick={() => window.location.href = "/"} />
           <Link to="/" className="text-3xl">
             RIDE & ROLL
           </Link>

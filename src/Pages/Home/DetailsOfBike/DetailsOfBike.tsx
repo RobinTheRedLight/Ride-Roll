@@ -5,25 +5,14 @@ import BookingModal from "../../Dashboard/User/BookingModal";
 import { useState } from "react";
 import { useAppSelector } from "../../../redux/hooks";
 import { selectCurrentUser } from "../../../redux/features/auth/authSlice";
-
-type Bike = {
-  _id: string;
-  name: string;
-  description: string;
-  pricePerHour: number;
-  isAvailable: boolean;
-  cc: number;
-  year: number;
-  model: string;
-  brand: string;
-  img: string;
-};
+import { Bike } from "../../../types";
 
 const DetailsOfBike = () => {
   const { id } = useParams<{ id: string }>();
   const [isModalOpen, setModalOpen] = useState(false);
   const { data, isLoading } = useGetBikesQuery(undefined);
-  const user = useAppSelector(selectCurrentUser);
+  // eslint-disable-next-line @typescript-eslint/no-explicit-any
+  const user = useAppSelector(selectCurrentUser) as any;
 
   if (isLoading) {
     return (
@@ -52,7 +41,8 @@ const DetailsOfBike = () => {
 
   const handleNotAvailable = () =>
     alert("Bike is not available at the moment.");
-  const handleUserNotAvailable = () => alert("Please log in to book a bike.");
+  const handleUserNotAvailable = () =>
+    alert("Please log in as an user to book the bike.");
 
   return (
     <>
@@ -102,7 +92,7 @@ const DetailsOfBike = () => {
             </ul>
 
             <div className="mt-2">
-              {user ? (
+              {user && user.role === "user" ? (
                 <button
                   className={`w-full lg:w-auto px-6 py-2 bg-black text-white rounded-md text-lg hover:bg-slate-700 transition-colors ${
                     !bike.isAvailable ? "opacity-50 cursor-not-allowed" : ""

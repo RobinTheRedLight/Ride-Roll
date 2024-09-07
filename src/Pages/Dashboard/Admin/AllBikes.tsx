@@ -4,19 +4,8 @@ import AllBikesCard from "./AllBikesCard";
 import BikeFormModal from "./BikeFormModal";
 import { useDeleteBikeMutation } from "../../../redux/features/admin/adminApi";
 import { Helmet } from "react-helmet-async";
+import { Bike } from "../../../types";
 
-type Product = {
-  _id: string;
-  name: string;
-  description: string;
-  pricePerHour: number;
-  isAvailable: boolean;
-  cc: number;
-  year: number;
-  model: string;
-  brand: string;
-  img: string;
-};
 
 const AllBikes = () => {
   const { data, isLoading } = useGetBikesQuery(undefined);
@@ -29,7 +18,7 @@ const AllBikes = () => {
   });
 
   const [showModal, setShowModal] = useState(false);
-  const [selectedBike, setSelectedBike] = useState<Product | null>(null);
+  const [selectedBike, setSelectedBike] = useState<Bike | null>(null);
 
   if (isLoading) {
     return (
@@ -38,7 +27,6 @@ const AllBikes = () => {
   }
 
   const bikes = data.data;
-  console.log(bikes);
 
   const handleSearch = (event: React.ChangeEvent<HTMLInputElement>) => {
     setSearchTerm(event.target.value);
@@ -68,7 +56,7 @@ const AllBikes = () => {
     setShowModal(true);
   };
 
-  const handleEditBike = (bike: Product) => {
+  const handleEditBike = (bike: Bike) => {
     setSelectedBike(bike);
     setShowModal(true);
   };
@@ -83,7 +71,7 @@ const AllBikes = () => {
     }
   };
 
-  const filteredProducts = bikes.filter((product: Product) => {
+  const filteredProducts = bikes.filter((product: Bike) => {
     return (
       product.name.toLowerCase().includes(searchTerm.toLowerCase()) &&
       (filter.brand ? product.brand === filter.brand : true) &&
@@ -168,7 +156,7 @@ const AllBikes = () => {
         </div>
       ) : (
         <div className="grid gap-0 md:gap-4 grid-cols-1 md:grid-cols-2 lg:grid-cols-3 place-items-center">
-          {filteredProducts.map((product: Product) => (
+          {filteredProducts.map((product: Bike) => (
             <AllBikesCard
               key={product._id}
               product={product}

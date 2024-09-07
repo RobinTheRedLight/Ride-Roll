@@ -2,6 +2,7 @@ import { configureStore } from "@reduxjs/toolkit";
 import authReducer from "./features/auth/authSlice";
 import userReducer from "./features/user/userSlice";
 import { baseApi } from "./api/baseApi";
+import bikeCompareReducer from "./features/bike/bikeCompareSlice";
 import {
   persistReducer,
   persistStore,
@@ -22,15 +23,24 @@ const persistConfigUser = {
   key: "coupon",
   storage,
 };
+const persistConfigBikeCompare = {
+  key: "bike",
+  storage,
+};
 
 const persistAuthReducer = persistReducer(persistConfig, authReducer);
 const persistUserReducer = persistReducer(persistConfigUser, userReducer);
+const persisBikeCompareReducer = persistReducer(
+  persistConfigBikeCompare,
+  bikeCompareReducer
+);
 
 export const store = configureStore({
   reducer: {
     [baseApi.reducerPath]: baseApi.reducer,
     auth: persistAuthReducer,
     user: persistUserReducer,
+    bikeCompare: persisBikeCompareReducer,
   },
   middleware: (getDefaultMiddlewares) =>
     getDefaultMiddlewares({

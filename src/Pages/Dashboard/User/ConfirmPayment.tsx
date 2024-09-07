@@ -3,20 +3,9 @@ import { useGetBikesQuery } from "../../../redux/features/user/userApi";
 import { Elements } from "@stripe/react-stripe-js";
 import { loadStripe } from "@stripe/stripe-js";
 import CheckoutForm from "./CheckoutForm/CheckoutForm";
+import { Bike } from "../../../types";
 
 const stripePromise = loadStripe(import.meta.env.VITE_Payment_Gateway_PK);
-
-type Bike = {
-  _id: string;
-  name: string;
-  description: string;
-  pricePerHour: number;
-  isAvailable: boolean;
-  cc: number;
-  year: number;
-  model: string;
-  brand: string;
-};
 
 const ConfirmPayment = () => {
   const { data, isLoading } = useGetBikesQuery(undefined);
