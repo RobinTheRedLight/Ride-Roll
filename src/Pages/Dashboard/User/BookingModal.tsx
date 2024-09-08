@@ -4,7 +4,7 @@ import { useNavigate } from "react-router-dom";
 type BookingModalProps = {
   isOpen: boolean;
   onClose: () => void;
-  onConfirmBooking: (startTime: string) => void;
+  onConfirmBooking: () => void;
   id: string | undefined;
 };
 
@@ -32,9 +32,10 @@ const BookingModal: React.FC<BookingModalProps> = ({
       alert("Please select a valid date and time.");
       return;
     }
-    onConfirmBooking(startTime);
+    const utcStartTime = new Date(startTime).toISOString();
+    onConfirmBooking();
     if (id) {
-      navigate(`/dashboard/payment/${id}`, { state: { startTime } });
+      navigate(`/dashboard/payment/${id}`, { state: { utcStartTime } });
     }
   };
 
@@ -49,7 +50,7 @@ const BookingModal: React.FC<BookingModalProps> = ({
               type="datetime-local"
               value={startTime}
               onChange={(e) => setStartTime(e.target.value)}
-              min={minDateTime} 
+              min={minDateTime}
               required
               className="w-full border border-gray-300 px-3 py-2 rounded"
             />

@@ -7,8 +7,8 @@ type RentalProps = {
     _id: string;
     userId: string;
     bikeId: string;
-    startTime: Date;
-    returnTime: Date | null;
+    startTime: string;
+    returnTime: string | null;
     totalCost: number;
     isReturned: boolean;
     isPaid: boolean;

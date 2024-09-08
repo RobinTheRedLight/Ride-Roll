@@ -30,7 +30,7 @@ const FullPayForm: React.FC<FullPayFormProps> = ({ bookingData }) => {
   useEffect(() => {
     if (price > 0) {
       fetch(
-        "https://bike-rental-service-nine.vercel.app/api/rentals/create-payment-intent",
+        "https://assignment-3-seven-lake.vercel.app/api/rentals/create-payment-intent",
         {
           method: "POST",
           headers: {

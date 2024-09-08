@@ -21,7 +21,7 @@ const ConfirmPayment = () => {
   const bike: Bike = bikes.find((element: Bike) => element._id === id);
 
   const bikedData = {
-    startTime: state.startTime as Date,
+    startTime: state.utcStartTime as string,
     id: id as string,
     price: price as number,
   };

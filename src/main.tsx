@@ -13,8 +13,10 @@ createRoot(document.getElementById("root")!).render(
     <Provider store={store}>
       <PersistGate loading={null} persistor={persistor}>
         <HelmetProvider>
-          <div className="mx-auto">
-            <RouterProvider router={router} />
+          <div>
+            <div className="mx-auto">
+              <RouterProvider router={router} />
+            </div>
           </div>
         </HelmetProvider>
       </PersistGate>

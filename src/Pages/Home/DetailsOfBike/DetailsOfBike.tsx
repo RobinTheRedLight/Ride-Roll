@@ -34,8 +34,7 @@ const DetailsOfBike = () => {
   const handleBookNowClick = () => setModalOpen(true);
   const handleModalClose = () => setModalOpen(false);
 
-  const handleConfirmBooking = (startTime: string) => {
-    alert(`Booking confirmed! Start time: ${startTime}`);
+  const handleConfirmBooking = () => {
     setModalOpen(false);
   };
 

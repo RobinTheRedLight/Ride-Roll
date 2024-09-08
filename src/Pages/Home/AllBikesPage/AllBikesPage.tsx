@@ -23,7 +23,9 @@ const ManageBikes = () => {
 
   if (isLoading) {
     return (
-      <span className="loading loading-ring loading-lg h-full mx-auto"></span>
+     <div className="h-screen flex items-center justify-center">
+       <span className="loading loading-ring loading-lg h-screen"></span>
+     </div>
     );
   }
 
