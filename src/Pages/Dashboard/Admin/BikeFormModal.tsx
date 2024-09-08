@@ -3,6 +3,7 @@ import {
   useAddBikeMutation,
   useUpdateBikeMutation,
 } from "../../../redux/features/admin/adminApi";
+import Swal from "sweetalert2";
 
 type BikeFormModalProps = {
   bikeData: {
@@ -71,9 +72,22 @@ const BikeFormModal = ({ bikeData, onClose }: BikeFormModalProps) => {
 
     if (bikeData) {
       await updateBike({ id: bikeData._id, data: formData });
+      Swal.fire({
+        position: "top-end",
+        icon: "success",
+        title: "Bike updated successfully",
+        showConfirmButton: false,
+        timer: 1500,
+      });
     } else {
-      console.log(formData)
       await addBike(formData);
+      Swal.fire({
+        position: "top-end",
+        icon: "success",
+        title: "Bike added successfully",
+        showConfirmButton: false,
+        timer: 1500,
+      });
     }
 
     onClose();

@@ -5,7 +5,7 @@ import BikeFormModal from "./BikeFormModal";
 import { useDeleteBikeMutation } from "../../../redux/features/admin/adminApi";
 import { Helmet } from "react-helmet-async";
 import { Bike } from "../../../types";
-
+import Swal from "sweetalert2";
 
 const AllBikes = () => {
   const { data, isLoading } = useGetBikesQuery(undefined);
@@ -65,6 +65,13 @@ const AllBikes = () => {
     if (window.confirm("Are you sure you want to delete this bike?")) {
       try {
         await deleteBike(id).unwrap();
+        Swal.fire({
+          position: "top-end",
+          icon: "success",
+          title: "Bike deleted successfully",
+          showConfirmButton: false,
+          timer: 1500,
+        });
       } catch (error) {
         console.error("Failed to delete bike:", error);
       }
