@@ -31,13 +31,16 @@ const CheckoutForm: React.FC<CheckoutFormProps> = ({ bikedData }) => {
 
   useEffect(() => {
     if (price > 0) {
-      fetch("http://localhost:5000/api/rentals/create-payment-intent", {
-        method: "POST",
-        headers: {
-          "Content-Type": "application/json",
-        },
-        body: JSON.stringify({ price }),
-      })
+      fetch(
+        "https://bike-rental-service-nine.vercel.app/api/rentals/create-payment-intent",
+        {
+          method: "POST",
+          headers: {
+            "Content-Type": "application/json",
+          },
+          body: JSON.stringify({ price }),
+        }
+      )
         .then((response) => response.json())
         .then((data: PaymentResponse) => {
           setClientSecret(data.data.client_secret);

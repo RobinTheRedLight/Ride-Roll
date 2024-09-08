@@ -7,8 +7,8 @@ type RentalProps = {
     _id: string;
     userId: string;
     bikeId: string;
-    startTime: string;
-    returnTime: string;
+    startTime: Date;
+    returnTime: Date | null;
     totalCost: number;
     isReturned: boolean;
     isPaid: boolean;
@@ -18,7 +18,6 @@ type RentalProps = {
   };
   onUpdate: () => void;
 };
-
 
 const ReturnBikeCard = ({ rental, onUpdate }: RentalProps) => {
   const { data, isLoading } = useGetBikesQuery(undefined);
