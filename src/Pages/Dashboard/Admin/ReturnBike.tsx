@@ -31,7 +31,7 @@ const ReturnBike = () => {
   };
 
   return (
-    <div className="container mx-auto px-4 py-16">
+    <div className="container mx-auto px-4 py-16 text-secondary-content">
       <Helmet>
         <title>Dashboard | Return Bike</title>
       </Helmet>

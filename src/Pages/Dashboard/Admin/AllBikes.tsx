@@ -94,7 +94,7 @@ const AllBikes = () => {
       <Helmet>
         <title>Dashboard | Bike Management</title>
       </Helmet>
-      <h2 className="text-3xl md:text-5xl mb-8 text-center font-[oswald]">
+      <h2 className="text-secondary-content text-3xl md:text-5xl mb-8 text-center font-[oswald]">
         All Bikes
       </h2>
 
@@ -111,14 +111,14 @@ const AllBikes = () => {
           placeholder="Search products..."
           value={searchTerm}
           onChange={handleSearch}
-          className="p-2 mb-2 md:mb-0 md:mr-2 border border-gray-300 rounded w-full md:w-1/3"
+          className="bg-info p-2 mb-2 md:mb-0 md:mr-2 border border-gray-300 rounded w-full md:w-1/3"
         />
         <div className="flex flex-col md:flex-row justify-center md:justify-start space-y-2 md:space-y-0 md:space-x-2 w-full md:w-auto">
           <select
             name="brand"
             value={filter.brand}
             onChange={handleFilterChange}
-            className="p-2 border border-gray-300 rounded w-full md:w-auto"
+            className="bg-info p-2 border border-gray-300 rounded w-full md:w-auto"
           >
             <option value="">All Brands</option>
             <option value="Honda">Honda</option>
@@ -130,7 +130,7 @@ const AllBikes = () => {
             name="model"
             value={filter.model}
             onChange={handleFilterChange}
-            className="p-2 border border-gray-300 rounded w-full md:w-auto"
+            className="bg-info p-2 border border-gray-300 rounded w-full md:w-auto"
           >
             <option value="">All Models</option>
             <option value="Standard">Standard</option>
@@ -142,7 +142,7 @@ const AllBikes = () => {
             name="availability"
             value={filter.availability}
             onChange={handleFilterChange}
-            className="p-2 border border-gray-300 rounded w-full md:w-auto"
+            className="bg-info p-2 border border-gray-300 rounded w-full md:w-auto"
           >
             <option value="">All Availability</option>
             <option value="true">Available</option>

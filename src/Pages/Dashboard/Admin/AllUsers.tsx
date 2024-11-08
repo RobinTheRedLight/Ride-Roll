@@ -8,8 +8,6 @@ import { FaTrashAlt, FaUserShield } from "react-icons/fa";
 import Swal from "sweetalert2";
 import { User } from "../../../types";
 
-
-
 const AllUsers = () => {
   const { data, isLoading } = useGetAllUsersQuery(undefined);
   const [deleteUser] = useDeleteUserMutation();
@@ -55,15 +53,15 @@ const AllUsers = () => {
   };
 
   return (
-    <div className="p-4 mt-5">
+    <div className="p-4 mt-5 text-secondary-content">
       <Helmet>
         <title>Dashboard | All Users</title>
       </Helmet>
       <h3 className="text-3xl font-['Oswald'] mb-5">
         Total Users: {users.length}
       </h3>
-      <div className="overflow-x-auto">
-        <table className="table w-full">
+      <div className="overflow-x-auto bg-secondary">
+        <table className="table w-full ">
           {/* head */}
           <thead>
             <tr className="text-left">

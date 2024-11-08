@@ -34,19 +34,19 @@ const UserHomeModal: React.FC<UserModalProps> = ({
 
   return (
     <div className="fixed inset-0 z-50 flex items-center justify-center bg-black bg-opacity-50">
-      <div className="modal-box">
+      <div className="modal-box bg-secondary text-secondary-content">
         <h2 className="text-xl font-bold mb-4">Edit Details</h2>
         <form onSubmit={handleSubmit(onSubmit)}>
           <input
             {...register("name")}
             placeholder="Name"
-            className="border p-2 mb-2 w-full"
+            className="border p-2 mb-2 w-full bg-info"
           />
 
           <input
             type="tel"
             placeholder="Mobile number"
-            className="border p-2 mb-2 w-full"
+            className="border p-2 mb-2 w-full bg-info"
             {...register("phone", {
               required: true,
               minLength: 6,
@@ -56,7 +56,7 @@ const UserHomeModal: React.FC<UserModalProps> = ({
           <input
             {...register("address")}
             placeholder="Address"
-            className="border p-2 mb-2 w-full"
+            className="border p-2 mb-2 w-full bg-info"
           />
 
           <button type="submit" className="bg-black text-white p-2 rounded">

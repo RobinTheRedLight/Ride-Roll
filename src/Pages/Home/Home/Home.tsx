@@ -1,11 +1,14 @@
 /* eslint-disable @typescript-eslint/no-explicit-any */
 import { Helmet } from "react-helmet-async";
-import Hero from "../Hero/Hero";
 import Featured from "../Featured/Featured";
 import Testimonials from "../Testimonials/Testimonials";
 import ChooseUs from "../ChooseUs/ChooseUs";
 import Discount from "../Discount/Discount";
-import ContactUs from "../ContactUs/ContactUs";
+
+import NavBarHero from "../Hero/Hero";
+import Footer from "../../Shared/Footer/Footer";
+import Locations from "../Locations/Locations";
+import Clients from "../Clients/Clients";
 
 const Home = () => {
   return (
@@ -13,12 +16,14 @@ const Home = () => {
       <Helmet>
         <title>Ride & Roll | Home</title>
       </Helmet>
-      <Hero />
-      <Featured />
-      <Testimonials />
+      <NavBarHero />
       <ChooseUs />
+      <Locations />
+      <Featured />
       <Discount />
-      <ContactUs />
+      <Testimonials />
+      <Clients />
+      <Footer />
     </div>
   );
 };

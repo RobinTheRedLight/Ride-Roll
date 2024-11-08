@@ -52,10 +52,10 @@ const Login = () => {
   };
 
   return (
-    <div className="min-h-screen flex items-center justify-center font-[Roboto]">
+    <div className="min-h-screen flex items-center justify-center font-[Roboto] ">
       <form
         onSubmit={handleSubmit(onSubmit)}
-        className=" p-8 rounded shadow-md w-96"
+        className=" p-8 rounded shadow-md w-96 bg-secondary text-secondary-content"
       >
         <h2 className="text-3xl lg:text-4xl mb-6 text-center font-[Oswald]">
           Login
@@ -69,6 +69,7 @@ const Login = () => {
           <input
             id="email"
             type="email"
+            defaultValue="admin@example.com"
             {...register("email", {
               required: "Email is required",
               pattern: {
@@ -93,6 +94,7 @@ const Login = () => {
           <input
             id="password"
             type="password"
+            defaultValue="admin123"
             {...register("password", { required: "Password is required" })}
             className={`w-full px-3 py-2 border rounded   ${
               errors.password ? "border-red-500" : "border"

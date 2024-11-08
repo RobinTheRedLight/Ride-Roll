@@ -36,7 +36,7 @@ export const BikeComparison: React.FC = () => {
     }
   };
 
-  // Filtered bikes based on search query, brand, availability, and price range
+  
   const filteredBikes = bikes.filter((bike) => {
     const matchesSearchQuery =
       bike.name.toLowerCase().includes(searchQuery.toLowerCase()) ||
@@ -61,7 +61,7 @@ export const BikeComparison: React.FC = () => {
     <div className="p-4 font-[Roboto]">
       {/* Sticky Comparison Table */}
       {selectedBikes.length > 0 && (
-        <div className="sticky top-0 z-10 backdrop-blur-lg backdrop-brightness-150 p-4 shadow-md mb-6 border rounded-md">
+        <div className="sticky top-0 z-10 backdrop-blur-lg backdrop-brightness-150 p-4 shadow-md mb-6 border rounded-md  text-secondary-content">
           <h2 className="text-2xl font-[Oswald] mb-4">Compare Bikes</h2>
           <div className="overflow-x-auto">
             <table className="min-w-full table-auto border-collapse border border-gray-300">
@@ -129,18 +129,18 @@ export const BikeComparison: React.FC = () => {
       )}
 
       {/* Search and Filter Section */}
-      <div className="mb-4 flex flex-col md:flex-row md:items-center justify-between gap-4">
+      <div className=" mb-4 flex flex-col md:flex-row md:items-center justify-between gap-4">
         <input
           type="text"
           value={searchQuery}
           onChange={(e) => setSearchQuery(e.target.value)}
           placeholder="Search by name, brand, or model"
-          className="border p-2 rounded w-full md:w-1/3"
+          className="bg-info border p-2 rounded w-full md:w-1/3"
         />
         <select
           value={brandFilter}
           onChange={(e) => setBrandFilter(e.target.value)}
-          className="border p-2 rounded w-full md:w-1/5"
+          className="bg-info border p-2 rounded w-full md:w-1/5"
         >
           <option value="">All Brands</option>
           {Array.from(new Set(bikes.map((bike) => bike.brand))).map((brand) => (
@@ -149,7 +149,7 @@ export const BikeComparison: React.FC = () => {
             </option>
           ))}
         </select>
-        <div className="flex items-center gap-2">
+        <div className="flex items-center gap-2 ">
           <input
             type="checkbox"
             checked={availabilityFilter}
@@ -166,7 +166,7 @@ export const BikeComparison: React.FC = () => {
               setPriceRange({ ...priceRange, min: Number(e.target.value) })
             }
             placeholder="Min Price"
-            className="border p-2 rounded w-24"
+            className="border p-2 rounded w-24 bg-info"
           />
           <span>-</span>
           <input
@@ -176,7 +176,7 @@ export const BikeComparison: React.FC = () => {
               setPriceRange({ ...priceRange, max: Number(e.target.value) })
             }
             placeholder="Max Price"
-            className="border p-2 rounded w-24"
+            className="border p-2 rounded w-24 bg-info"
           />
         </div>
       </div>
@@ -185,7 +185,10 @@ export const BikeComparison: React.FC = () => {
       <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
         {filteredBikes.length > 0 ? (
           filteredBikes.map((bike) => (
-            <div key={bike._id} className="p-4 border rounded-lg shadow-md">
+            <div
+              key={bike._id}
+              className="bg-secondary text-secondary-content p-4 border rounded-lg shadow-md"
+            >
               <img
                 src={bike.img}
                 alt={bike.name}

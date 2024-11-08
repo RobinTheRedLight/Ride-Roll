@@ -13,7 +13,7 @@ const Dashboard: React.FC = () => {
   // eslint-disable-next-line @typescript-eslint/no-explicit-any
   const user = useAppSelector(selectCurrentUser) as any;
   const [theme, setTheme] = useState(
-    localStorage.getItem("theme") || "cupcake"
+    localStorage.getItem("theme") || "customLight"
   );
   useEffect(() => {
     localStorage.setItem("theme", theme);
@@ -25,9 +25,9 @@ const Dashboard: React.FC = () => {
   }, [theme]);
   const handleToggle = (e: React.ChangeEvent<HTMLInputElement>) => {
     if (e.target.checked) {
-      setTheme("sunset");
+      setTheme("customDark");
     } else {
-      setTheme("cupcake");
+      setTheme("customLight");
     }
   };
 
@@ -41,7 +41,7 @@ const Dashboard: React.FC = () => {
   };
 
   return (
-    <div className="drawer lg:drawer-open ">
+    <div className=" drawer lg:drawer-open ">
       <input id="my-drawer-2" type="checkbox" className="drawer-toggle" />
       <div className="drawer-content flex flex-col">
         <Outlet />
@@ -52,19 +52,19 @@ const Dashboard: React.FC = () => {
           Open drawer
         </label>
       </div>
-      <div className="drawer-side">
+      <div className=" drawer-side">
         <label
           htmlFor="my-drawer-2"
           aria-label="close sidebar"
           className="drawer-overlay"
         ></label>
-        <ul className="menu p-4 w-80 min-h-full backdrop-blur-lg">
-          <li className="backdrop-brightness-150 border mb-5 rounded-full">
+        <ul className="menu p-4 w-80 min-h-full bg-secondary text-secondary-content">
+          <li className="backdrop-brightness-150 border mb-5 rounded-lg">
             <label className="swap swap-rotate">
               <input
                 type="checkbox"
                 onChange={handleToggle}
-                checked={theme === "cupcake" ? false : true}
+                checked={theme === "customLight" ? false : true}
               />
 
               <svg

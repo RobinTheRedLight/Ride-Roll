@@ -45,7 +45,7 @@ const ReturnBikeCard = ({ rental, onUpdate }: RentalProps) => {
   console.log(bikes);
 
   return (
-    <div className="border border-gray-300 rounded-lg p-4 m-4 w-72 text-center shadow-lg font-[Roboto]">
+    <div className="bg-secondary border border-gray-300 rounded-lg p-4 m-4 w-72 text-center shadow-lg font-[Roboto]">
       <div className="mt-4">
         <h3 className="text-xl font-bold mb-2">{bike?.name}</h3>
         <div className="text-start p-0 lg:p-5">

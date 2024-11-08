@@ -23,9 +23,9 @@ const ManageBikes = () => {
 
   if (isLoading) {
     return (
-     <div className="h-screen flex items-center justify-center">
-       <span className="loading loading-ring loading-lg h-screen"></span>
-     </div>
+      <div className="h-screen flex items-center justify-center">
+        <span className="loading loading-ring loading-lg h-screen"></span>
+      </div>
     );
   }
 
@@ -70,7 +70,7 @@ const ManageBikes = () => {
       <Helmet>
         <title>Ride & Roll | Bikes</title>
       </Helmet>
-      <h2 className="text-3xl md:text-5xl mb-8 text-center font-[oswald] ">
+      <h2 className="text-3xl md:text-5xl mb-8 text-center font-[oswald] text-secondary-content">
         All Bikes
       </h2>
 
@@ -80,14 +80,14 @@ const ManageBikes = () => {
           placeholder="Search products..."
           value={searchTerm}
           onChange={handleSearch}
-          className="p-2 mb-2 md:mb-0 md:mr-2 border border-gray-300 rounded w-full md:w-1/3"
+          className="bg-info p-2 mb-2 md:mb-0 md:mr-2 border border-gray-300 rounded w-full md:w-1/3"
         />
         <div className="flex flex-col md:flex-row justify-center md:justify-start space-y-2 md:space-y-0 md:space-x-2 w-full md:w-auto">
           <select
             name="brand"
             value={filter.brand}
             onChange={handleFilterChange}
-            className="p-2 border border-gray-300 rounded w-full md:w-auto"
+            className="p-2 border bg-info border-gray-300 rounded w-full md:w-auto"
           >
             <option value="">All Brands</option>
             <option value="Honda">Honda</option>
@@ -99,7 +99,7 @@ const ManageBikes = () => {
             name="model"
             value={filter.model}
             onChange={handleFilterChange}
-            className="p-2 border border-gray-300 rounded w-full md:w-auto"
+            className="p-2 border bg-info border-gray-300 rounded w-full md:w-auto"
           >
             <option value="">All Types</option>
             <option value="Standard">Standard</option>
@@ -111,7 +111,7 @@ const ManageBikes = () => {
             name="availability"
             value={filter.availability}
             onChange={handleFilterChange}
-            className="p-2 border border-gray-300 rounded w-full md:w-auto"
+            className="p-2 border bg-info border-gray-300 rounded w-full md:w-auto"
           >
             <option value="">All Availability</option>
             <option value="true">Available</option>
@@ -131,7 +131,7 @@ const ManageBikes = () => {
           <p className="text-xl">No products found.</p>
         </div>
       ) : (
-        <div className="grid gap-0 md:gap-4 grid-cols-1 md:grid-cols-2 lg:grid-cols-3 place-items-center">
+        <div className="grid grid-cols-1 md:grid-cols-4 md:gap-5 font-[Roboto]">
           {filteredProducts.map((product: Bike) => (
             <AllBikesPageCard key={product._id} product={product} />
           ))}

@@ -9,7 +9,7 @@ import logo from "../../../assets/logo.svg";
 
 const NavBar = () => {
   const [theme, setTheme] = useState(
-    localStorage.getItem("theme") || "cupcake"
+    localStorage.getItem("theme") || "customLight"
   );
 
   useEffect(() => {
@@ -23,9 +23,9 @@ const NavBar = () => {
 
   const handleToggle = (e: React.ChangeEvent<HTMLInputElement>) => {
     if (e.target.checked) {
-      setTheme("sunset");
+      setTheme("customDark");
     } else {
-      setTheme("cupcake");
+      setTheme("customLight");
     }
   };
 
@@ -44,46 +44,51 @@ const NavBar = () => {
 
   const navLinks = (
     <>
-      <li className="text-lg hover:text-gray-400">
+      <li className="text-lg hover:text-gray-400 ">
         <Link to="/" onClick={() => setIsMenuOpen(false)}>
           Home
         </Link>
       </li>
-      <li className="text-lg hover:text-gray-400">
-        <Link to="/bikes" onClick={() => setIsMenuOpen(false)}>
+      <li className="text-lg hover:text-gray-400 ">
+        <Link to="/home/bikes" onClick={() => setIsMenuOpen(false)}>
           Bikes
         </Link>
       </li>
       {user ? (
         <>
-          <li className="text-lg hover:text-gray-400">
+          <li className="text-lg hover:text-gray-400 ">
             <Link to="/dashboard/profile" onClick={() => setIsMenuOpen(false)}>
               Dashboard
             </Link>
           </li>
-          <li className="text-lg hover:text-gray-400">
+          <li className="text-lg hover:text-gray-400 ">
             <button onClick={handleLogOut} className="focus:outline-none">
               Logout
             </button>
           </li>
         </>
       ) : (
-        <li className="text-lg hover:text-gray-400">
+        <li className="text-lg hover:text-gray-400 ">
           <Link to="/login" onClick={() => setIsMenuOpen(false)}>
             Login
           </Link>
         </li>
       )}
       <li className="text-lg hover:text-gray-400">
-        <Link to="/about" onClick={() => setIsMenuOpen(false)}>
+        <Link to="/home/contact" onClick={() => setIsMenuOpen(false)}>
+          Contact Us
+        </Link>
+      </li>
+      <li className="text-lg hover:text-gray-400 ">
+        <Link to="/home/about" onClick={() => setIsMenuOpen(false)}>
           About
         </Link>
       </li>
-      <label className="swap swap-rotate">
+      <label className="swap swap-rotate ">
         <input
           type="checkbox"
           onChange={handleToggle}
-          checked={theme === "cupcake" ? false : true}
+          checked={theme === "customLight" ? false : true}
         />
 
         <svg
@@ -96,7 +101,7 @@ const NavBar = () => {
 
         {/* moon icon */}
         <svg
-          className="swap-off h-8 w-10 fill-current"
+          className="swap-off h-8 w-10 fill-current t"
           xmlns="http://www.w3.org/2000/svg"
           viewBox="0 0 24 24"
         >
@@ -107,18 +112,23 @@ const NavBar = () => {
   );
 
   return (
-    <nav className="font-[Roboto] shadow-lg">
-      <div className="container mx-auto px-4 py-3 flex justify-between items-center">
-        <div className="flex items-center font-[Oswald]">
-          <img src={logo} alt="Logo" onClick={() => window.location.href = "/"} />
-          <Link to="/" className="text-3xl">
+    <nav className="bg-base-200 text-secondary-content font-[Roboto]  shadow-lg ">
+      <div className="container mx-auto flex justify-between items-center">
+        <div className="flex items-center font-[Oswald] ">
+          <img
+            src={logo}
+            alt="Logo"
+            onClick={() => (window.location.href = "/")}
+            className="cursor-pointer w-20 py-1.5"
+          />
+          <Link to="/" className="text-2xl ">
             RIDE & ROLL
           </Link>
         </div>
 
-        <ul className="hidden lg:flex space-x-6 items-center">{navLinks}</ul>
+        <ul className="hidden lg:flex space-x-6 items-center ">{navLinks}</ul>
 
-        <div className="lg:hidden">
+        <div className="lg:hidden ">
           <button
             onClick={toggleMenu}
             className="focus:outline-none"
@@ -160,7 +170,7 @@ const NavBar = () => {
       </div>
 
       {isMenuOpen && (
-        <div className="lg:hidden">
+        <div className="lg:hidden ">
           <ul className="space-y-4 p-4">{navLinks}</ul>
         </div>
       )}

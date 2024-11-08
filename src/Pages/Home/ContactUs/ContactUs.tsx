@@ -41,9 +41,9 @@ const ContactUs = () => {
   };
 
   return (
-    <div className="py-16 font-[Roboto]">
+    <div className="py-8 font-[Roboto] text-secondary-content">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-        <h2 className="text-3xl sm:text-4xl lg:text-5xl mb-8 sm:mb-12 text-center font-[Oswald]">
+        <h2 className="text-3xl  lg:text-4xl mb-8 sm:mb-12 text-center font-[Oswald] uppercase">
           Contact Us
         </h2>
 

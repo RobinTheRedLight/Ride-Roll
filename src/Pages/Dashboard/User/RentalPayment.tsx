@@ -8,31 +8,42 @@ import {
   selectCouponCode,
 } from "../../../redux/features/user/userSlice";
 import { useEffect, useState } from "react";
-import { useGetAllCouponsQuery } from "../../../redux/features/admin/adminApi";
-import { Coupon } from "../../../types";
+import {
+  useGetAllCouponsQuery,
+  useGetAllRentalsQuery,
+  useUpdateBikeMutation,
+} from "../../../redux/features/admin/adminApi";
+import { Coupon, Rental } from "../../../types";
+import ReactStars from "react-stars";
+
 const stripePromise = loadStripe(import.meta.env.VITE_Payment_Gateway_PK);
-
-
 
 const RentalPayment = () => {
   const { data, isLoading } = useGetAllCouponsQuery(undefined);
+  const { data: rentals, isLoading: isRentalLoading } =
+    useGetAllRentalsQuery(undefined);
   const { state } = useLocation();
   const { id } = useParams();
   const couponCode = useSelector(selectCouponCode);
   const [coupon, setCoupon] = useState(couponCode || "");
   const [totalCost, setTotalCost] = useState<number>(0);
   const dispatch = useDispatch();
+  const [updateBike] = useUpdateBikeMutation();
+  const [userRating, setUserRating] = useState<number>(0);
 
   useEffect(() => {
     const cost = state.totalCost;
     setTotalCost(cost - 100);
   }, [state, id]);
 
-  if (isLoading) {
+  if (isLoading || isRentalLoading) {
     return (
       <span className="loading loading-infinity loading-lg h-full mx-auto"></span>
     );
   }
+
+  const rentalsData = rentals?.data || [];
+  const rentalData = rentalsData.find((rental: Rental) => rental._id === id);
 
   const coupons = data.data;
 
@@ -54,10 +65,23 @@ const RentalPayment = () => {
     }
   };
 
+  // Handler for setting user rating
+  const handleRatingChange = async (newRating: number) => {
+    setUserRating(newRating);
+
+    try {
+      await updateBike({ id: rentalData.bikeId, data: { rating: newRating } });
+      console.log("Rating updated successfully:", newRating);
+    } catch (error) {
+      console.error("Failed to update rating:", error);
+    }
+  };
+
   const bookingData = {
     id: id as string,
     price: totalCost as number,
   };
+
   return (
     <div className="font-[Roboto] mt-10 p-5 max-w-4xl">
       <h1 className="text-3xl md:text-5xl font-[Oswald]">
@@ -90,10 +114,19 @@ const RentalPayment = () => {
       </div>
       <div className="divider"></div>
       <div>
-        <Elements stripe={stripePromise}>
-          <FullPayForm bookingData={bookingData}></FullPayForm>
-        </Elements>
+        <h3 className="font-semibold">Rate your experience:</h3>
+        <ReactStars
+          count={5}
+          onChange={handleRatingChange}
+          size={24}
+          value={userRating}
+          color2={"#ffd700"}
+        />
       </div>
+      <div className="divider"></div>
+      <Elements stripe={stripePromise}>
+        <FullPayForm bookingData={bookingData}></FullPayForm>
+      </Elements>
     </div>
   );
 };

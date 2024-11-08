@@ -21,30 +21,36 @@ import CouponManagement from "../Pages/Dashboard/Admin/CouponManagement";
 import AllBikesPage from "../Pages/Home/AllBikesPage/AllBikesPage";
 import DetailsOfBike from "../Pages/Home/DetailsOfBike/DetailsOfBike";
 import { BikeComparison } from "../Pages/Dashboard/User/BikeComparison";
+import ContactUs from "../Pages/Home/ContactUs/ContactUs";
 
 export const router = createBrowserRouter([
   {
     path: "/",
+    element: <Home></Home>,
+  },
+  {
+    path: "/home",
     element: <Main></Main>,
     children: [
       {
-        path: "/",
-        element: <Home></Home>,
-      },
-      {
-        path: "/about",
+        path: "about",
         element: <AboutUs></AboutUs>,
       },
       {
-        path: "/bikes",
+        path: "bikes",
         element: <AllBikesPage></AllBikesPage>,
       },
       {
-        path: "/bikes/:id",
+        path: "bikes/:id",
         element: <DetailsOfBike></DetailsOfBike>,
+      },
+      {
+        path: "contact",
+        element: <ContactUs />,
       },
     ],
   },
+
   {
     path: "dashboard",
     element: (

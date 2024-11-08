@@ -39,7 +39,7 @@ const Rental = () => {
   };
 
   return (
-    <div className=" p-10 font-[Roboto]">
+    <div className="text-secondary-content p-10 font-[Roboto]">
       <Helmet>
         <title>Dashboard | My rentals</title>
       </Helmet>

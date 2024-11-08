@@ -2,7 +2,6 @@ import { Helmet } from "react-helmet-async";
 import img1 from "../../assets/aboutUs/img1.png";
 import img2 from "../../assets/aboutUs/img2.png";
 
-
 type TeamMember = {
   id: number;
   name: string;
@@ -10,7 +9,6 @@ type TeamMember = {
   bio: string;
   imageUrl: string;
 };
-
 
 type Milestone = {
   year: string;
@@ -32,7 +30,6 @@ const teamMembers: TeamMember[] = [
     bio: "Jane is a tech enthusiast who loves integrating technology with outdoor experiences.",
     imageUrl: img2,
   },
- 
 ];
 
 const milestones: Milestone[] = [
@@ -44,7 +41,7 @@ const milestones: Milestone[] = [
 
 const AboutUs = () => {
   return (
-    <div className="py-12 font-[Roboto]">
+    <div className="py-12 font-[Roboto] text-secondary-content">
       <Helmet>
         <title>Ride & Roll || About</title>
       </Helmet>
@@ -63,23 +60,19 @@ const AboutUs = () => {
 
         {/* Team Section */}
         <section className="mb-12">
-          <h2 className="text-3xl  mb-8 lg:text-4xl font-[Oswald]">
-            Our Team
-          </h2>
-          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+          <h2 className="text-3xl  mb-8 lg:text-4xl font-[Oswald]">Our Team</h2>
+          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8 ">
             {teamMembers.map((member) => (
               <div
                 key={member.id}
-                className=" p-6 rounded-lg shadow-lg text-center border"
+                className=" p-6 rounded-lg shadow-lg text-center border bg-secondary text-secondary-content"
               >
                 <img
                   src={member.imageUrl}
                   alt={member.name}
                   className="w-32 h-32 mx-auto mb-4 rounded-full object-cover"
                 />
-                <h3 className="text-xl font-semibold mb-2">
-                  {member.name}
-                </h3>
+                <h3 className="text-xl font-semibold mb-2">{member.name}</h3>
                 <p className="text-sm">{member.role}</p>
                 <p className="">{member.bio}</p>
               </div>

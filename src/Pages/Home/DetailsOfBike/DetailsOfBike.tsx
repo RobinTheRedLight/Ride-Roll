@@ -16,7 +16,9 @@ const DetailsOfBike = () => {
 
   if (isLoading) {
     return (
-      <span className="loading loading-ring loading-lg h-full mx-auto"></span>
+      <div className="h-screen flex items-center justify-center">
+        <span className="loading loading-dots loading-lg"></span>
+      </div>
     );
   }
 
@@ -45,9 +47,11 @@ const DetailsOfBike = () => {
 
   return (
     <>
-      <div className="container mx-auto mt-12 mb-12">
-        <h1 className="text-5xl text-center font-[Oswald]">{bike.name}</h1>
-        <div className="card lg:card-side bg-base-100 shadow-xl font-[Roboto]">
+      <div className="container mx-auto mt-6 mb-12">
+        <h1 className="text-5xl text-center font-[Oswald] text-secondary-content">
+          {bike.name}
+        </h1>
+        <div className="card lg:card-side shadow-xl font-[Roboto] bg-secondary text-secondary-content mt-6">
           <figure className="w-full lg:w-1/2">
             <PhotoProvider>
               <PhotoView src={bike.img}>
@@ -60,8 +64,8 @@ const DetailsOfBike = () => {
             </PhotoProvider>
           </figure>
 
-          <div className="card-body lg:w-1/2">
-            <ul className="space-y-2">
+          <div className="card-body lg:w-1/2 ">
+            <ul className="space-y-2 ">
               <li className="text-lg">
                 <strong>Description:</strong> {bike.description}
               </li>

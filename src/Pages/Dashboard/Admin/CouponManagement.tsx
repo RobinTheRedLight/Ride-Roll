@@ -68,7 +68,7 @@ const CouponManagement = () => {
   };
 
   return (
-    <div className="max-w-4xl md:w-full mx-auto mt-0 lg:mt-5 p-4 sm:p-8  shadow-lg rounded-lg font-[Roboto]">
+    <div className="max-w-4xl md:w-full mx-auto mt-0 lg:mt-5 p-4 sm:p-8  shadow-lg rounded-lg font-[Roboto] bg-secondary text-secondary-content">
       <Helmet>
         <title>Dashboard | Coupon Management</title>
       </Helmet>
@@ -77,12 +77,10 @@ const CouponManagement = () => {
       </h1>
       <form
         onSubmit={handleSubmit(onSubmit)}
-        className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4 sm:gap-6 mb-8 mt-0 lg:mt-10"
+        className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4 sm:gap-6 mb-8 mt-0 lg:mt-10 "
       >
         <div>
-          <label className="block text-sm font-medium ">
-            Coupon Code
-          </label>
+          <label className="block text-sm font-medium ">Coupon Code</label>
           <input
             type="text"
             {...register("code", { required: "Coupon code is required" })}
@@ -95,9 +93,7 @@ const CouponManagement = () => {
         </div>
 
         <div>
-          <label className="block text-sm font-medium ">
-            Discount (%)
-          </label>
+          <label className="block text-sm font-medium ">Discount (%)</label>
           <input
             type="number"
             {...register("discount", {
@@ -116,9 +112,7 @@ const CouponManagement = () => {
         </div>
 
         <div>
-          <label className="block text-sm font-medium">
-            Expiry Date
-          </label>
+          <label className="block text-sm font-medium">Expiry Date</label>
           <input
             type="date"
             {...register("expiryDate", {
@@ -134,9 +128,7 @@ const CouponManagement = () => {
         </div>
 
         <div className="sm:col-span-2 lg:col-span-3">
-          <label className="block text-sm font-medium ">
-            Description
-          </label>
+          <label className="block text-sm font-medium ">Description</label>
           <textarea
             {...register("description", {
               required: "Description is required",
@@ -203,10 +195,7 @@ const CouponManagement = () => {
             ))
           ) : (
             <tr>
-              <td
-                colSpan={4}
-                className="px-4 sm:px-6 py-4 text-center text-sm"
-              >
+              <td colSpan={4} className="px-4 sm:px-6 py-4 text-center text-sm">
                 No coupons available
               </td>
             </tr>

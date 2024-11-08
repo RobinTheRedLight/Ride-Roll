@@ -3,7 +3,6 @@ import { useGetBikesQuery } from "../../../redux/features/user/userApi";
 import moment from "moment";
 import { Bike, Rental } from "../../../types";
 
-
 const RentalCard = ({ rental }: { rental: Rental }) => {
   const { _id, startTime, returnTime, totalCost, isPaid, bikeId, isReturned } =
     rental;
@@ -29,7 +28,7 @@ const RentalCard = ({ rental }: { rental: Rental }) => {
   const bike = bikes.find((element: Bike) => element._id === bikeId);
 
   return (
-    <div className="border border-gray-300 rounded-lg p-4 w-[22rem] lg:w-96 text-center shadow-lg font-[Roboto] mt-5">
+    <div className="bg-secondary  border border-gray-300 rounded-lg p-4 w-[22rem] lg:w-96 text-center shadow-lg font-[Roboto] mt-5">
       <div className="mt-4 ">
         <h3 className="text-xl font-bold mb-2">{bike.name}</h3>
         <div className="text-start p-0 lg:p-5">

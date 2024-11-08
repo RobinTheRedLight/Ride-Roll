@@ -55,7 +55,7 @@ const SignUp = () => {
     <div className="min-h-screen flex items-center justify-center font-[Roboto]">
       <form
         onSubmit={handleSubmit(onSubmit)}
-        className=" p-8 rounded shadow-md w-96"
+        className=" p-8 rounded shadow-md w-96 bg-secondary text-secondary-content"
       >
         <h2 className="text-3xl lg:text-4xl mb-6 text-center font-[Oswald]">
           Sign Up

@@ -9,4 +9,5 @@ export type Bike = {
   model: string;
   brand: string;
   img: string;
+  rating?: number;
 };

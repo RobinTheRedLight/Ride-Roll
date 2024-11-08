@@ -94,8 +94,8 @@ const BikeFormModal = ({ bikeData, onClose }: BikeFormModalProps) => {
   };
 
   return (
-    <div className="fixed inset-0 bg-gray-600 bg-opacity-50 flex justify-center items-center font-[Roboto]">
-      <div className="backdrop-blur-lg backdrop-brightness-110 p-8 rounded-lg shadow-md w-96">
+    <div className="fixed inset-0 bg-black bg-opacity-50 flex justify-center items-center font-[Roboto] z-10">
+      <div className="backdrop-blur-lg backdrop-brightness-110 p-8 rounded-lg shadow-md w-96 bg-secondary text-secondary-content">
         <h2 className="text-2xl font-bold mb-4">
           {bikeData ? "Edit Bike" : "Add Bike"}
         </h2>
@@ -106,7 +106,7 @@ const BikeFormModal = ({ bikeData, onClose }: BikeFormModalProps) => {
             value={formData.name}
             onChange={handleChange}
             placeholder="Enter bike name"
-            className="w-full p-2 mb-2 border rounded"
+            className="w-full p-2 mb-2 border rounded bg-info"
             required
           />
           <input
@@ -115,7 +115,7 @@ const BikeFormModal = ({ bikeData, onClose }: BikeFormModalProps) => {
             value={formData.img}
             onChange={handleChange}
             placeholder="Enter bike image link"
-            className="w-full p-2 mb-2 border rounded"
+            className="w-full p-2 mb-2 border rounded bg-info"
             required
           />
           <textarea
@@ -123,7 +123,7 @@ const BikeFormModal = ({ bikeData, onClose }: BikeFormModalProps) => {
             value={formData.description}
             onChange={handleChange}
             placeholder="Enter bike description"
-            className="w-full p-2 mb-2 border rounded"
+            className="w-full p-2 mb-2 border rounded bg-info"
             required
           />
           <input
@@ -134,7 +134,7 @@ const BikeFormModal = ({ bikeData, onClose }: BikeFormModalProps) => {
             onChange={handleChange}
             min="0"
             step="0.01"
-            className="w-full p-2 mb-2 border rounded"
+            className="w-full p-2 mb-2 border rounded bg-info"
             required
           />
           <input
@@ -144,7 +144,7 @@ const BikeFormModal = ({ bikeData, onClose }: BikeFormModalProps) => {
             value={formData.cc || ""}
             onChange={handleChange}
             min="0"
-            className="w-full p-2 mb-2 border rounded"
+            className="w-full p-2 mb-2 border rounded bg-info"
             required
           />
           <input
@@ -155,14 +155,14 @@ const BikeFormModal = ({ bikeData, onClose }: BikeFormModalProps) => {
             onChange={handleChange}
             min="1900"
             max={new Date().getFullYear()}
-            className="w-full p-2 mb-2 border rounded"
+            className="w-full p-2 mb-2 border rounded bg-info"
             required
           />
           <select
             name="model"
             value={formData.model}
             onChange={handleChange}
-            className="w-full p-2 mb-2 border rounded"
+            className="w-full p-2 mb-2 border rounded bg-info"
             required
           >
             <option value="">Select Model</option>
@@ -175,7 +175,7 @@ const BikeFormModal = ({ bikeData, onClose }: BikeFormModalProps) => {
             name="brand"
             value={formData.brand}
             onChange={handleChange}
-            className="w-full p-2 mb-2 border rounded"
+            className="w-full p-2 mb-2 border rounded bg-info"
             required
           >
             <option value="">Select Brand</option>
@@ -186,7 +186,7 @@ const BikeFormModal = ({ bikeData, onClose }: BikeFormModalProps) => {
           </select>
           <button
             type="submit"
-            className="w-full bg-blue-500 text-white p-2 rounded"
+            className="w-full bg-blue-500 text-white p-2 rounded "
           >
             {bikeData ? "Update Bike" : "Add Bike"}
           </button>
